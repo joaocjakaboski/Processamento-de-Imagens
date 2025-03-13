@@ -27,11 +27,7 @@ namespace manipulacao {
         }
 
         private void botaoImportarImagem_Click(object sender, EventArgs e) {
-            Boolean imagemCarregada = carregarImagem();
-
-            if (imagemCarregada == true) {
-                guia1CaixaImagemImportada.Image = img1;
-            }                     
+            carregarImagem(guia1CaixaImagemImportada);
         }
 
         private void botaoAdicionarBrilho_Click(object sender, EventArgs e) {
@@ -47,21 +43,9 @@ namespace manipulacao {
                     for (int j = 0; j < imagem.Height; j++) {
                         Color pixel = imagem.GetPixel(i, j);
 
-                        int valorR = pixel.R + (int)guia1EntradaValorBrilho.Value;
-                        int valorG = pixel.G + (int)guia1EntradaValorBrilho.Value;
-                        int valorB = pixel.B + (int)guia1EntradaValorBrilho.Value;
-
-                        if (valorR > 255) {
-                            valorR = 255;
-                        }
-
-                        if (valorG > 255) {
-                            valorG = 255;
-                        }
-
-                        if (valorB > 255) {
-                            valorB = 255;
-                        }
+                        int valorR = Math.Min(pixel.R + (int)guia1EntradaValorBrilho.Value, 255);
+                        int valorG = Math.Min(pixel.G + (int)guia1EntradaValorBrilho.Value, 255);
+                        int valorB = Math.Min(pixel.B + (int)guia1EntradaValorBrilho.Value, 255);
 
                         Color cor = Color.FromArgb(255, valorR, valorG, valorB);
 
@@ -86,21 +70,9 @@ namespace manipulacao {
                     for (int j = 0; j < imagem.Height; j++) {
                         Color pixel = imagem.GetPixel(i, j);
 
-                        int valorR = pixel.R - (int)guia1EntradaValorBrilho.Value;
-                        int valorG = pixel.G - (int)guia1EntradaValorBrilho.Value;
-                        int valorB = pixel.B - (int)guia1EntradaValorBrilho.Value;
-
-                        if (valorR < 0) {
-                            valorR = 0;
-                        }
-
-                        if (valorG < 0) {
-                            valorG = 0;
-                        }
-
-                        if (valorB < 0) {
-                            valorB = 0;
-                        }
+                        int valorR = Math.Max(pixel.R - (int)guia1EntradaValorBrilho.Value, 0);
+                        int valorG = Math.Max(pixel.G - (int)guia1EntradaValorBrilho.Value, 0);
+                        int valorB = Math.Max(pixel.B - (int)guia1EntradaValorBrilho.Value, 0);
 
                         Color cor = Color.FromArgb(255, valorR, valorG, valorB);
 
@@ -112,22 +84,14 @@ namespace manipulacao {
         }
 
         private void guia2BotaoImportarImagem1_Click(object sender, EventArgs e) {
-            Boolean imagemCarregada = carregarImagem();
-
-            if (imagemCarregada == true) {
-                guia2CaixaImagemImportada1.Image = img1;
-            }
+            carregarImagem(guia2CaixaImagemImportada1);
         }
 
         private void guia2BotaoImportarImagem2_Click(object sender, EventArgs e) {
-            Boolean imagemCarregada = carregarImagem();
-
-            if (imagemCarregada == true) {
-                guia2CaixaImagemImportada2.Image = img1;
-            }
+            carregarImagem(guia2CaixaImagemImportada2);
         }
 
-        private Boolean carregarImagem() {
+        private void carregarImagem(PictureBox pictureBox) {
             // Configurações iniciais da OpenFileDialogBox
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             var filePath = string.Empty;
@@ -150,7 +114,9 @@ namespace manipulacao {
                     bLoadImgOK = false;
                 }
             }
-            return bLoadImgOK;
+            if (bLoadImgOK == true) {
+                pictureBox.Image = img1;
+            }
         }
 
         private void guia2BotaoSoma_Click(object sender, EventArgs e) {
@@ -164,21 +130,9 @@ namespace manipulacao {
                         Color pixel = imagem1.GetPixel(i, j);
                         Color pixel2 = imagem2.GetPixel(i, j);
 
-                        int valorR = pixel.R + pixel2.R;
-                        int valorG = pixel.G + pixel2.G;
-                        int valorB = pixel.B + pixel2.B;
-
-                        if (valorR > 255) {
-                            valorR = 255;
-                        }
-
-                        if (valorG > 255) {
-                            valorG = 255;
-                        }
-
-                        if (valorB > 255) {
-                            valorB = 255;
-                        }
+                        int valorR = Math.Min(pixel.R + pixel2.R, 255);
+                        int valorG = Math.Min(pixel.G + pixel2.G, 255);
+                        int valorB = Math.Min(pixel.B + pixel2.B, 255);
 
                         Color cor = Color.FromArgb(255, valorR, valorG, valorB);
 
@@ -200,21 +154,9 @@ namespace manipulacao {
                         Color pixel = imagem1.GetPixel(i, j);
                         Color pixel2 = imagem2.GetPixel(i, j);
 
-                        int valorR = pixel.R - pixel2.R;
-                        int valorG = pixel.G - pixel2.G;
-                        int valorB = pixel.B - pixel2.B;
-
-                        if (valorR < 0) {
-                            valorR = 0;
-                        }
-
-                        if (valorG < 0) {
-                            valorG = 0;
-                        }
-
-                        if (valorB < 0) {
-                            valorB = 0;
-                        }
+                        int valorR = Math.Max(pixel.R - pixel2.R, 0);
+                        int valorG = Math.Max(pixel.G - pixel2.G, 0);
+                        int valorB = Math.Max(pixel.B - pixel2.B, 0);
 
                         Color cor = Color.FromArgb(255, valorR, valorG, valorB);
 

@@ -74,7 +74,7 @@
             // guia1CaixaImagemEditada
             // 
             this.guia1CaixaImagemEditada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.guia1CaixaImagemEditada.Location = new System.Drawing.Point(516, 50);
+            this.guia1CaixaImagemEditada.Location = new System.Drawing.Point(267, 50);
             this.guia1CaixaImagemEditada.Name = "guia1CaixaImagemEditada";
             this.guia1CaixaImagemEditada.Size = new System.Drawing.Size(200, 200);
             this.guia1CaixaImagemEditada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -160,7 +160,7 @@
             // guia1Label1
             // 
             this.guia1Label1.AutoSize = true;
-            this.guia1Label1.Location = new System.Drawing.Point(513, 31);
+            this.guia1Label1.Location = new System.Drawing.Point(264, 31);
             this.guia1Label1.Name = "guia1Label1";
             this.guia1Label1.Size = new System.Drawing.Size(88, 13);
             this.guia1Label1.TabIndex = 7;
