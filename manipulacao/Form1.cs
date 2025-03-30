@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,10 +30,12 @@ namespace manipulacao {
 
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Guia 1
+
         private void guia1BotaoImportarImagem_Click(object sender, EventArgs e) {
             carregarImagem(guia1CaixaImagemImportada);
             guia1CaixaImagemEditada.Image = guia1CaixaImagemImportada.Image;
         }
+
         private void guia1BotaoSalvarImagem_Click(object sender, EventArgs e) {
             if (guia1CaixaImagemEditada.Image != null) {
                 salvarImagem(guia1CaixaImagemEditada);
@@ -51,7 +55,7 @@ namespace manipulacao {
             } else if (guia1CaixaImagemImportada.Image != null) {
                 guia1CaixaImagemEditada.Image = adicionarBrilho(guia1CaixaImagemImportada, (int)guia1EntradaValorBrilho.Value);
             } else {
-                MessageBox.Show("É necessario importar uma imagem primeiro!");
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
             }
         }
 
@@ -62,7 +66,7 @@ namespace manipulacao {
             } else if (guia1CaixaImagemImportada.Image != null) {
                 guia1CaixaImagemEditada.Image = removerBrilho(guia1CaixaImagemImportada, (int)guia1EntradaValorBrilho.Value);
             } else {
-                MessageBox.Show("É necessario importar uma imagem primeiro!");
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
             }
         }
 
@@ -73,7 +77,7 @@ namespace manipulacao {
             } else if (guia1CaixaImagemImportada.Image != null) {
                 guia1CaixaImagemEditada.Image = converterParaEscalaDeCinza(guia1CaixaImagemImportada);
             } else {
-                MessageBox.Show("É necessario importar uma imagem primeiro!");
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
             }
         }
 
@@ -83,7 +87,7 @@ namespace manipulacao {
             } else if (guia1CaixaImagemImportada.Image != null) {
                 guia1CaixaImagemEditada.Image = espelharHorizontalmente(guia1CaixaImagemImportada);
             } else {
-                MessageBox.Show("É necessario importar uma imagem primeiro!");
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
             }
         }
 
@@ -93,36 +97,39 @@ namespace manipulacao {
             } else if (guia1CaixaImagemImportada.Image != null) {
                 guia1CaixaImagemEditada.Image = espelharVerticalmente(guia1CaixaImagemImportada);
             } else {
-                MessageBox.Show("É necessario importar uma imagem primeiro!");
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
             }
         }
 
-
         private void guia1BotaoAdicionarContraste_Click(object sender, EventArgs e) {
-            if (guia1CaixaImagemEditada.Image != null && guia1EntradaValorContraste.Value > 0) {
-                guia1CaixaImagemEditada.Image = adicionarContraste(guia1CaixaImagemEditada, (float)guia1EntradaValorContraste.Value);
-            } else if (guia1CaixaImagemImportada.Image != null && guia1EntradaValorContraste.Value > 0) {
-                guia1CaixaImagemEditada.Image = adicionarContraste(guia1CaixaImagemImportada, (float)guia1EntradaValorContraste.Value);
-            } else {
-                if (guia1EntradaValorContraste.Value == 0 && (guia1CaixaImagemImportada.Image != null || guia1CaixaImagemEditada.Image != null)) {
+            if (guia1CaixaImagemImportada.Image != null) {
+                if (guia1EntradaValorContraste.Value > 0) {
+                    if (guia1CaixaImagemEditada.Image != null) {
+                        guia1CaixaImagemEditada.Image = adicionarContraste(guia1CaixaImagemEditada, (float)guia1EntradaValorContraste.Value);
+                    } else {
+                        guia1CaixaImagemEditada.Image = adicionarContraste(guia1CaixaImagemImportada, (float)guia1EntradaValorContraste.Value);
+                    }
+                } else {
                     MessageBox.Show("O valor do contraste deve ser maior que 0");
-                } else { 
-                    MessageBox.Show("É necessario importar uma imagem primeiro!");
                 }
+            } else {
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
             }
         }
 
         private void guia1BotaoRemoverContraste_Click(object sender, EventArgs e) {
-            if (guia1CaixaImagemEditada.Image != null && guia1EntradaValorContraste.Value > 0) {
-                guia1CaixaImagemEditada.Image = removerContraste(guia1CaixaImagemEditada, (float)guia1EntradaValorContraste.Value);
-            } else if (guia1CaixaImagemImportada.Image != null && guia1EntradaValorContraste.Value > 0) {
-                guia1CaixaImagemEditada.Image = removerContraste(guia1CaixaImagemImportada, (float)guia1EntradaValorContraste.Value);
-            } else {
-                if (guia1EntradaValorContraste.Value == 0 && (guia1CaixaImagemImportada.Image != null || guia1CaixaImagemEditada.Image != null)) {
-                    MessageBox.Show("O valor do contraste deve ser maior que 0");
+            if (guia1CaixaImagemImportada.Image != null) {
+                if (guia1EntradaValorContraste.Value > 0) {
+                    if (guia1CaixaImagemEditada.Image != null) {
+                        guia1CaixaImagemEditada.Image = removerContraste(guia1CaixaImagemEditada, (float)guia1EntradaValorContraste.Value);
+                    } else {
+                        guia1CaixaImagemEditada.Image = removerContraste(guia1CaixaImagemImportada, (float)guia1EntradaValorContraste.Value);
+                    }
                 } else {
-                    MessageBox.Show("É necessario importar uma imagem primeiro!");
+                    MessageBox.Show("O valor do contraste deve ser maior que 0");
                 }
+            } else {
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
             }
         }
 
@@ -136,34 +143,102 @@ namespace manipulacao {
         private void guia2BotaoImportarImagem2_Click(object sender, EventArgs e) {
             carregarImagem(guia2CaixaImagemImportada2);
         }
+
         private void guia2BotaoSalvarImagem_Click(object sender, EventArgs e) {
             salvarImagem(guia2CaixaImagemEditada);
         }
 
         private void guia2BotaoSoma_Click(object sender, EventArgs e) {
-            guia2Label1.Visible = false;
-            guia2Label2.Visible = false;
-            guia2CaixaImagemC.Visible = false;
-            guia2CaixaImagemD.Visible = false;
-            guia2CaixaImagemEditada.Image = somarImagens(guia2CaixaImagemImportada1, guia2CaixaImagemImportada2);
+            if (guia2CaixaImagemImportada1.Image != null && guia2CaixaImagemImportada2.Image != null) {
+                if (guia2CaixaImagemImportada1.Image.Size == guia2CaixaImagemImportada2.Image.Size) {
+                    guia2Label1.Visible = false;
+                    guia2Label2.Visible = false;
+                    guia2CaixaImagemC.Visible = false;
+                    guia2CaixaImagemD.Visible = false;
+                    guia2CaixaImagemEditada.Image = somarImagens(guia2CaixaImagemImportada1, guia2CaixaImagemImportada2);
+                } else {
+                    MessageBox.Show("As imagens devem ter o mesmo tamanho.");
+                }
+            } else {
+                MessageBox.Show("É necessário importar duas imagens primeiro.");
+            }
         }
 
         private void guia2BotaoSubtracao_Click(object sender, EventArgs e) {
-            guia2Label1.Visible = false;
-            guia2Label2.Visible = false;
-            guia2CaixaImagemC.Visible = false;
-            guia2CaixaImagemD.Visible = false;
-            guia2CaixaImagemEditada.Image = subtrairImagens(guia2CaixaImagemImportada1, guia2CaixaImagemImportada2);
+            if (guia2CaixaImagemImportada1.Image != null && guia2CaixaImagemImportada2.Image != null) {
+                if (guia2CaixaImagemImportada1.Image.Size == guia2CaixaImagemImportada2.Image.Size) {
+                    guia2Label1.Visible = false;
+                    guia2Label2.Visible = false;
+                    guia2CaixaImagemC.Visible = false;
+                    guia2CaixaImagemD.Visible = false;
+                    guia2CaixaImagemEditada.Image = subtrairImagens(guia2CaixaImagemImportada1, guia2CaixaImagemImportada2);
+                } else {
+                    MessageBox.Show("As imagens devem ter o mesmo tamanho.");
+                }
+            } else {
+                MessageBox.Show("É necessário importar duas imagens primeiro.");
+            }
         }
 
         private void guia2BotaoDiferenca_Click(object sender, EventArgs e) {
-            guia2CaixaImagemC.Image = subtrairImagens(guia2CaixaImagemImportada1, guia2CaixaImagemImportada2);
-            guia2CaixaImagemD.Image = subtrairImagens(guia2CaixaImagemImportada2, guia2CaixaImagemImportada1);
-            guia2CaixaImagemEditada.Image = somarImagens(guia2CaixaImagemC, guia2CaixaImagemD);
-            guia2Label1.Visible = true;
-            guia2Label2.Visible = true;
-            guia2CaixaImagemC.Visible = true;
-            guia2CaixaImagemD.Visible = true;
+            if (guia2CaixaImagemImportada1.Image != null && guia2CaixaImagemImportada2.Image != null) {
+                if (guia2CaixaImagemImportada1.Image.Size == guia2CaixaImagemImportada2.Image.Size) {
+                    guia2CaixaImagemC.Image = subtrairImagens(guia2CaixaImagemImportada1, guia2CaixaImagemImportada2);
+                    guia2CaixaImagemD.Image = subtrairImagens(guia2CaixaImagemImportada2, guia2CaixaImagemImportada1);
+                    guia2CaixaImagemEditada.Image = somarImagens(guia2CaixaImagemC, guia2CaixaImagemD);
+                    guia2Label1.Visible = true;
+                    guia2Label2.Visible = true;
+                    guia2CaixaImagemC.Visible = true;
+                    guia2CaixaImagemD.Visible = true;
+                } else {
+                    MessageBox.Show("As imagens devem ter o mesmo tamanho.");
+                }
+            } else {
+                MessageBox.Show("É necessário importar duas imagens primeiro.");
+            }
+        }
+
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Guia 3
+
+        private void guia3BotaoImportarImagem1_Click(object sender, EventArgs e) {
+            carregarImagem(guia3CaixaImagemImportada1);
+        }
+
+        private void guia3BotaoImportarImagem2_Click(object sender, EventArgs e) {
+            carregarImagem(guia3CaixaImagemImportada2);
+        }
+
+        private void guia3BotaoSalvarImagem_Click(object sender, EventArgs e) {
+            salvarImagem(guia3CaixaImagemEditada);
+        }
+
+        private void guia3BotaoBlendSoma_Click(object sender, EventArgs e) {
+            if (guia3CaixaImagemImportada1.Image != null && guia3CaixaImagemImportada2.Image != null) {
+                if (guia3CaixaImagemImportada1.Image.Size == guia3CaixaImagemImportada2.Image.Size) {
+                    if (guia3EntradaBlending.Value > 0) {
+                        guia3CaixaImagemEditada.Image = combinacaoLinearBlending(guia3CaixaImagemImportada1, guia3CaixaImagemImportada2, (float)guia3EntradaBlending.Value);
+                    } else {
+                        MessageBox.Show("O valor de entrada deve ser maior que 0.");
+                    }
+                } else {
+                    MessageBox.Show("As imagens devem ter o mesmo tamanho;");
+                }
+            } else {
+                MessageBox.Show("É necessário importar duas imagens primeiro.");
+            }
+        }
+
+        private void guia3BotaoMedia_Click(object sender, EventArgs e) {
+            if (guia3CaixaImagemImportada1.Image != null && guia3CaixaImagemImportada2.Image != null) {
+                if (guia3CaixaImagemImportada1.Image.Size == guia3CaixaImagemImportada2.Image.Size) {
+                    guia3CaixaImagemEditada.Image = combinacaoLinearMedia(guia3CaixaImagemImportada1, guia3CaixaImagemImportada2);
+                } else {
+                    MessageBox.Show("As imagens devem ter o mesmo tamanho;");
+                }
+            } else {
+                MessageBox.Show("É necessário importar duas imagens primeiro.");
+            }
         }
 
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -277,22 +352,21 @@ namespace manipulacao {
             Bitmap imagem2 = (Bitmap)imagemEntrada2.Image;
             Bitmap saida = new Bitmap(imagem1.Width, imagem1.Height);
 
-            if (imagem1.Width == imagem2.Width && imagem1.Height == imagem2.Height) {
-                for (int i = 0; i < imagem1.Width; i++) {
-                    for (int j = 0; j < imagem1.Height; j++) {
-                        Color pixel = imagem1.GetPixel(i, j);
-                        Color pixel2 = imagem2.GetPixel(i, j);
+            for (int i = 0; i < imagem1.Width; i++) {
+                for (int j = 0; j < imagem1.Height; j++) {
+                    Color pixel = imagem1.GetPixel(i, j);
+                    Color pixel2 = imagem2.GetPixel(i, j);
 
-                        int valorR = Math.Min(pixel.R + pixel2.R, 255);
-                        int valorG = Math.Min(pixel.G + pixel2.G, 255);
-                        int valorB = Math.Min(pixel.B + pixel2.B, 255);
+                    int valorR = Math.Min(pixel.R + pixel2.R, 255);
+                    int valorG = Math.Min(pixel.G + pixel2.G, 255);
+                    int valorB = Math.Min(pixel.B + pixel2.B, 255);
 
-                        Color cor = Color.FromArgb(255, valorR, valorG, valorB);
+                    Color cor = Color.FromArgb(255, valorR, valorG, valorB);
 
-                        saida.SetPixel(i, j, cor);
-                    }
+                    saida.SetPixel(i, j, cor);
                 }
             }
+
             return saida;
         }
 
@@ -301,22 +375,21 @@ namespace manipulacao {
             Bitmap imagem2 = (Bitmap)imagemEntrada2.Image;
             Bitmap saida = new Bitmap(imagem1.Width, imagem1.Height);
 
-            if (imagem1.Width == imagem2.Width && imagem1.Height == imagem2.Height) {
-                for (int i = 0; i < imagem1.Width; i++) {
-                    for (int j = 0; j < imagem1.Height; j++) {
-                        Color pixel = imagem1.GetPixel(i, j);
-                        Color pixel2 = imagem2.GetPixel(i, j);
+            for (int i = 0; i < imagem1.Width; i++) {
+                for (int j = 0; j < imagem1.Height; j++) {
+                    Color pixel = imagem1.GetPixel(i, j);
+                    Color pixel2 = imagem2.GetPixel(i, j);
 
-                        int valorR = Math.Max(pixel.R - pixel2.R, 0);
-                        int valorG = Math.Max(pixel.G - pixel2.G, 0);
-                        int valorB = Math.Max(pixel.B - pixel2.B, 0);
+                    int valorR = Math.Max(pixel.R - pixel2.R, 0);
+                    int valorG = Math.Max(pixel.G - pixel2.G, 0);
+                    int valorB = Math.Max(pixel.B - pixel2.B, 0);
 
-                        Color cor = Color.FromArgb(255, valorR, valorG, valorB);
+                    Color cor = Color.FromArgb(255, valorR, valorG, valorB);
 
-                        saida.SetPixel(i, j, cor);
-                    }
+                    saida.SetPixel(i, j, cor);
                 }
             }
+
             return saida;
         }
 
@@ -381,6 +454,51 @@ namespace manipulacao {
             return saida;
         }
 
+        private Bitmap combinacaoLinearBlending(PictureBox imagemEntrada1, PictureBox imagemEntrada2, float entradaBlending) {
+            Bitmap imagem1 = (Bitmap)imagemEntrada1.Image;
+            Bitmap imagem2 = (Bitmap)imagemEntrada2.Image;
+            Bitmap saida = new Bitmap(imagem1.Width, imagem1.Height);
+            float taxaImagem1 = entradaBlending / 100;
+            float taxaImagem2 = 1 - taxaImagem1;
+
+            for (int i = 0; i < imagem1.Width; i++) {
+                for (int j = 0; j < imagem2.Width; j++) {
+                    Color pixel1 = imagem1.GetPixel(i, j);
+                    Color pixel2 = imagem2.GetPixel(i, j);
+
+                    int valorR = Math.Min((int)((taxaImagem1 * pixel1.R) + (taxaImagem2 * pixel2.R)), 255);
+                    int valorG = Math.Min((int)((taxaImagem1 * pixel1.G) + (taxaImagem2 * pixel2.G)), 255);
+                    int valorB = Math.Min((int)((taxaImagem1 * pixel1.B) + (taxaImagem2 * pixel2.B)), 255);
+
+                    Color cor = Color.FromArgb(255, valorR, valorG, valorB);
+
+                    saida.SetPixel(i, j, cor);
+                }
+            }
+            return saida;
+        }
+
+        private Bitmap combinacaoLinearMedia(PictureBox imagemEntrada1, PictureBox imagemEntrada2) {
+            Bitmap imagem1 = (Bitmap)imagemEntrada1.Image;
+            Bitmap imagem2 = (Bitmap)imagemEntrada2.Image;
+            Bitmap saida = new Bitmap(imagem1.Width, imagem1.Height);
+
+            for (int i = 0; i < imagem1.Width; i++) {
+                for (int j = 0; j < imagem2.Width; j++) {
+                    Color pixel1 = imagem1.GetPixel(i, j);
+                    Color pixel2 = imagem2.GetPixel(i, j);
+
+                    int valorR = (pixel1.R + pixel2.R) / 2;
+                    int valorG = (pixel1.G + pixel2.G) / 2;
+                    int valorB = (pixel1.B + pixel2.B) / 2;
+
+                    Color cor = Color.FromArgb(255, valorR, valorG, valorB);
+
+                    saida.SetPixel(i, j, cor);
+                }
+            }
+            return saida;
+        }
 
         private void carregarImagem(PictureBox pictureBox) {
             // Configurações iniciais da OpenFileDialogBox
@@ -435,8 +553,8 @@ namespace manipulacao {
                     }
                 }
             } else {
-                MessageBox.Show("Nenhuma imagem para salvar!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Nenhuma imagem para salvar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }      
+        }
     }
 }
