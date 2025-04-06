@@ -5,10 +5,12 @@ using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace manipulacao {
     public partial class Form1 : Form {
@@ -49,7 +51,6 @@ namespace manipulacao {
         }
 
         private void guia1BotaoAdicionarBrilho_Click(object sender, EventArgs e) {
-
             if (guia1CaixaImagemEditada.Image != null) {
                 guia1CaixaImagemEditada.Image = adicionarBrilho(guia1CaixaImagemEditada, (int)guia1EntradaValorBrilho.Value);
             } else if (guia1CaixaImagemImportada.Image != null) {
@@ -60,7 +61,6 @@ namespace manipulacao {
         }
 
         private void guia1BotaoRemoverBrilho_Click(object sender, EventArgs e) {
-
             if (guia1CaixaImagemEditada.Image != null) {
                 guia1CaixaImagemEditada.Image = removerBrilho(guia1CaixaImagemEditada, (int)guia1EntradaValorBrilho.Value);
             } else if (guia1CaixaImagemImportada.Image != null) {
@@ -71,7 +71,6 @@ namespace manipulacao {
         }
 
         private void guia1BotaoConverterParaCinza_Click(object sender, EventArgs e) {
-
             if (guia1CaixaImagemEditada.Image != null) {
                 guia1CaixaImagemEditada.Image = converterParaEscalaDeCinza(guia1CaixaImagemEditada);
             } else if (guia1CaixaImagemImportada.Image != null) {
@@ -133,15 +132,43 @@ namespace manipulacao {
             }
         }
 
-// -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Guia 2
+        private void guia1BotaoLimiarizar_Click(object sender, EventArgs e) {
+            if (guia1CaixaImagemEditada.Image != null) {
+                guia1CaixaImagemEditada.Image = limiarizar(guia1CaixaImagemEditada, (int)guia1EntradaLimiarizacao.Value);
+            } else if (guia1CaixaImagemImportada.Image != null) {
+                guia1CaixaImagemEditada.Image = limiarizar(guia1CaixaImagemImportada, (int)guia1EntradaLimiarizacao.Value);
+            } else {
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        // Guia 2
 
         private void guia2BotaoImportarImagem1_Click(object sender, EventArgs e) {
             carregarImagem(guia2CaixaImagemImportada1);
+            if (guia2CaixaImagemImportada1.Image != null || guia2CaixaImagemImportada2.Image != null) {
+                if (eBinario(guia2CaixaImagemImportada1) || eBinario(guia2CaixaImagemImportada2)) {
+                    guia2ComboBoxOperacoesLogicas.Enabled = true;
+                    guia2BotaoExecutar.Enabled = true;
+                } else {
+                    guia2ComboBoxOperacoesLogicas.Enabled = false;
+                    guia2BotaoExecutar.Enabled = false;
+                }
+            }
         }
 
         private void guia2BotaoImportarImagem2_Click(object sender, EventArgs e) {
             carregarImagem(guia2CaixaImagemImportada2);
+            if (guia2CaixaImagemImportada1.Image != null || guia2CaixaImagemImportada2.Image != null) {
+                if (eBinario(guia2CaixaImagemImportada1) || eBinario(guia2CaixaImagemImportada2)) {
+                    guia2ComboBoxOperacoesLogicas.Enabled = true;
+                    guia2BotaoExecutar.Enabled = true;
+                } else {
+                    guia2ComboBoxOperacoesLogicas.Enabled = false;
+                    guia2BotaoExecutar.Enabled = false;
+                }
+            }
         }
 
         private void guia2BotaoSalvarImagem_Click(object sender, EventArgs e) {
@@ -198,8 +225,61 @@ namespace manipulacao {
             }
         }
 
-// -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Guia 3
+        private void guia2ComboBoxOperacoesLogicas_TextChanged(object sender, EventArgs e) {
+            if (guia2ComboBoxOperacoesLogicas.Text == "NOT") {
+                guia2RadioButtonImg1.Enabled = true;
+                guia2RadioButtonImg2.Enabled = true;
+            } else {
+                guia2RadioButtonImg1.Enabled = false;
+                guia2RadioButtonImg2.Enabled = false;   
+            }
+        }
+
+        private void guia2BotaoExecutar_Click(object sender, EventArgs e) {
+            guia2CaixaImagemC.Visible = false;
+            guia2CaixaImagemD.Visible = false;
+            guia2Label1.Visible = false;
+            guia2Label2.Visible = false;
+            if (guia2ComboBoxOperacoesLogicas.Text != "") {
+                String operacao = guia2ComboBoxOperacoesLogicas.Text;
+                int idImagem = 0;
+                if (operacao != "NOT") {
+                    if (guia2CaixaImagemImportada1.Image != null && guia2CaixaImagemImportada2.Image != null) {
+                        if (guia2CaixaImagemImportada1.Image.Size == guia2CaixaImagemImportada2.Image.Size) {
+                            guia2CaixaImagemEditada.Image = operacaoLogica(guia2CaixaImagemImportada1, guia2CaixaImagemImportada2, operacao, idImagem);
+                        } else {
+                            MessageBox.Show("As imagens devem ter o mesmo tamanho.");
+                        }
+                    } else {
+                        MessageBox.Show("É necessário importar duas imagens primeiro.");
+                    }
+                } else {
+                    if (guia2RadioButtonImg1.Checked) {
+                        idImagem = 1;
+                        if (guia2CaixaImagemImportada1.Image == null) {
+                            MessageBox.Show("Imagem 1 está vazia.");
+                        } else {
+                            guia2CaixaImagemEditada.Image = operacaoLogica(guia2CaixaImagemImportada1, guia2CaixaImagemImportada2, operacao, idImagem);
+                        }
+                    } else if (guia2RadioButtonImg2.Checked) {
+                        idImagem = 2;
+                        if (guia2CaixaImagemImportada2.Image == null) {
+                            MessageBox.Show("Imagem 2 está vazia.");
+                        } else {
+                            guia2CaixaImagemEditada.Image = operacaoLogica(guia2CaixaImagemImportada1, guia2CaixaImagemImportada2, operacao, idImagem);
+                        }
+                    } else {
+                        MessageBox.Show("Selecione uma imagem para a operação NOT.");
+                    }
+                }
+            } else {
+                MessageBox.Show("Selecione uma operação lógica.");
+            }
+        } 
+        
+
+        // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        // Guia 3
 
         private void guia3BotaoImportarImagem1_Click(object sender, EventArgs e) {
             carregarImagem(guia3CaixaImagemImportada1);
@@ -500,13 +580,108 @@ namespace manipulacao {
             return saida;
         }
 
+        private Bitmap limiarizar(PictureBox imagemEntrada, int valorLimiar) {
+            Bitmap imagem = (Bitmap)imagemEntrada.Image;
+            Bitmap saida = new Bitmap(imagem.Width, imagem.Height);
+
+            // Se a imagem carregou perfeitamente...
+            if (bLoadImgOK == true) {
+                // Percorre todos os pixels da imagem...
+                for (int i = 0; i < imagem.Width; i++) {
+                    for (int j = 0; j < imagem.Height; j++) {
+                        Color pixel = imagem.GetPixel(i, j);
+
+                        int corCinza = (pixel.R + pixel.G + pixel.B) / 3;
+
+                        if (corCinza >= valorLimiar) {
+                            corCinza = 255;
+                        } else {
+                            corCinza = 0;
+                        }
+
+                        Color cor = Color.FromArgb(255, corCinza, corCinza, corCinza);
+
+                        saida.SetPixel(i, j, cor);
+                    }
+                }
+            }
+            return saida;
+        }
+
+        private Bitmap operacaoLogica(PictureBox imagemEntrada1, PictureBox imagemEntrada2, String operacao, int idImagem) {
+            Bitmap imagem1 = (Bitmap)imagemEntrada1.Image;
+            Bitmap imagem2 = (Bitmap)imagemEntrada2.Image;
+            
+            Bitmap saida = new Bitmap(imagem1.Width, imagem1.Height);
+
+            for (int i = 0; i < imagem1.Width; i++) {
+                for (int j = 0; j < imagem1.Height; j++) {
+                    Color pixel1 = Color.Empty;
+                    Color pixel2 = Color.Empty;
+                                        
+                    switch (operacao) {
+                        case "AND":
+                            pixel1 = imagem1.GetPixel(i, j);
+                            pixel2 = imagem2.GetPixel(i, j);
+                            int varCorAnd = (pixel1.R == 255 && pixel2.R == 255) ? 255 : 0;
+                            Color corAnd = Color.FromArgb(255, varCorAnd, varCorAnd, varCorAnd);
+                            saida.SetPixel(i, j, corAnd);
+                        break;
+                        case "OR":
+                            pixel1 = imagem1.GetPixel(i, j);
+                            pixel2 = imagem2.GetPixel(i, j);
+                            int varCorOr = (pixel1.R == 255 || pixel2.R == 255) ? 255 : 0;
+                            Color corOr = Color.FromArgb(255, varCorOr, varCorOr, varCorOr);
+                            saida.SetPixel(i, j, corOr);
+                        break;
+                        case "XOR":
+                            pixel1 = imagem1.GetPixel(i, j);
+                            pixel2 = imagem2.GetPixel(i, j);
+                            int varCorXor = (pixel1.R != pixel2.R) ? 255 : 0;
+                            Color corXor = Color.FromArgb(255, varCorXor, varCorXor, varCorXor);
+                            saida.SetPixel(i, j, corXor);
+                        break;
+                        case "NOT":
+                            if (idImagem == 1) {
+                                pixel1 = imagem1.GetPixel(i, j);
+                                int valor = (pixel1.R == 255) ? 0 : 255;
+                                Color cor = Color.FromArgb(255, valor, valor, valor);
+                                saida.SetPixel(i, j, cor);
+                            } else if (idImagem == 2) {
+                                pixel2 = imagem2.GetPixel(i, j);
+                                int valor = (pixel2.R == 255) ? 0 : 255;
+                                Color cor = Color.FromArgb(255, valor, valor, valor);
+                                saida.SetPixel(i, j, cor);
+                            }
+                        break;
+                    }
+                }
+            }
+            return saida;
+        }
+
+        private Boolean eBinario (PictureBox imagemEntrada) {
+            Bitmap imagem = (Bitmap)imagemEntrada.Image;
+
+            for (int i = 0; i < imagem.Width; i++) {
+                for (int j = 0; j < imagem.Height; j++) {
+                    Color pixel = imagem.GetPixel(i, j);
+                    if (pixel.R != 0 && pixel.R != 255) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+
         private void carregarImagem(PictureBox pictureBox) {
             // Configurações iniciais da OpenFileDialogBox
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             var filePath = string.Empty;
             openFileDialog1.InitialDirectory = "C:\\Users\\João\\Documents\\Faculdade\\5_semestre\\Processamento de Imagens\\Material Matlab\\Matlab";
             openFileDialog1.Filter = "TIFF image (*.tif)|*.tif|JPG image (*.jpg)|*.jpg|BMP image (*.bmp)|*.bmp|PNG image (*.png)|*.png|All files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.FilterIndex = 5;
             openFileDialog1.RestoreDirectory = true;
 
             // Se um arquivo foi localizado com sucesso...
@@ -556,5 +731,7 @@ namespace manipulacao {
                 MessageBox.Show("Nenhuma imagem para salvar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        
     }
 }
