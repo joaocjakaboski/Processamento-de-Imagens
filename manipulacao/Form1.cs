@@ -179,19 +179,15 @@ namespace manipulacao {
             }
 
             int valorOffSet = 3;
-            if(guia1ComboBoxTamanhoMatriz.Text == "5x5") {
-                valorOffSet = 5;
-            } else if (guia1ComboBoxTamanhoMatriz.Text == "7x7") {
-                valorOffSet = 7;
-            } else if (guia1ComboBoxTamanhoMatriz.Text == "9x9") {
-                valorOffSet = 9;
+            if (guia1ComboBoxTamanhoMatriz.Text != null) {
+                valorOffSet = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
             }
 
             if (guia1CaixaImagemImportada.Image != null) {
                 if (guia1CaixaImagemEditada.Image != null) {
-                    guia1CaixaImagemEditada.Image = realce(guia1CaixaImagemImportada, "MIN", valorBorda, valorOffSet);
-                } else {
                     guia1CaixaImagemEditada.Image = realce(guia1CaixaImagemEditada, "MIN", valorBorda, valorOffSet);
+                } else {
+                    guia1CaixaImagemEditada.Image = realce(guia1CaixaImagemImportada, "MIN", valorBorda, valorOffSet);
                 }
             } else {
                 MessageBox.Show("É necessario importar uma imagem primeiro.");
@@ -207,19 +203,15 @@ namespace manipulacao {
             }
 
             int valorOffSet = 3;
-            if (guia1ComboBoxTamanhoMatriz.Text == "5x5") {
-                valorOffSet = 5;
-            } else if (guia1ComboBoxTamanhoMatriz.Text == "7x7") {
-                valorOffSet = 7;
-            } else if (guia1ComboBoxTamanhoMatriz.Text == "9x9") {
-                valorOffSet = 9;
+            if (guia1ComboBoxTamanhoMatriz.Text != null) {
+                valorOffSet = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
             }
 
             if (guia1CaixaImagemImportada.Image != null) {
                 if (guia1CaixaImagemEditada.Image != null) {
-                    guia1CaixaImagemEditada.Image = realce(guia1CaixaImagemImportada, "MEAN", valorBorda, valorOffSet);
-                } else {
                     guia1CaixaImagemEditada.Image = realce(guia1CaixaImagemEditada, "MEAN", valorBorda, valorOffSet);
+                } else {
+                    guia1CaixaImagemEditada.Image = realce(guia1CaixaImagemImportada, "MEAN", valorBorda, valorOffSet);
                 }
             } else {
                 MessageBox.Show("É necessario importar uma imagem primeiro.");
@@ -235,19 +227,15 @@ namespace manipulacao {
             }
 
             int valorOffSet = 3;
-            if (guia1ComboBoxTamanhoMatriz.Text == "5x5") {
-                valorOffSet = 5;
-            } else if (guia1ComboBoxTamanhoMatriz.Text == "7x7") {
-                valorOffSet = 7;
-            } else if (guia1ComboBoxTamanhoMatriz.Text == "9x9") {
-                valorOffSet = 9;
+            if (guia1ComboBoxTamanhoMatriz.Text != null) {
+                valorOffSet = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
             }
 
             if (guia1CaixaImagemImportada.Image != null) {
                 if (guia1CaixaImagemEditada.Image != null) {
-                    guia1CaixaImagemEditada.Image = realce(guia1CaixaImagemImportada, "MAX", valorBorda, valorOffSet);
-                } else {
                     guia1CaixaImagemEditada.Image = realce(guia1CaixaImagemEditada, "MAX", valorBorda, valorOffSet);
+                } else {
+                    guia1CaixaImagemEditada.Image = realce(guia1CaixaImagemImportada, "MAX", valorBorda, valorOffSet);
                 }
             } else {
                 MessageBox.Show("É necessario importar uma imagem primeiro.");
@@ -263,24 +251,50 @@ namespace manipulacao {
             }
 
             int valorOffSet = 3;
-            if (guia1ComboBoxTamanhoMatriz.Text == "5x5") {
-                valorOffSet = 5;
-            } else if (guia1ComboBoxTamanhoMatriz.Text == "7x7") {
-                valorOffSet = 7;
-            } else if (guia1ComboBoxTamanhoMatriz.Text == "9x9") {
-                valorOffSet = 9;
+            if (guia1ComboBoxTamanhoMatriz.Text != null) {
+                valorOffSet = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
             }
 
             if (guia1CaixaImagemImportada.Image != null) {
                 if (guia1CaixaImagemEditada.Image != null) {
-                    guia1CaixaImagemEditada.Image = realce(guia1CaixaImagemImportada, "MEDIANA", valorBorda, valorOffSet);
-                } else {
                     guia1CaixaImagemEditada.Image = realce(guia1CaixaImagemEditada, "MEDIANA", valorBorda, valorOffSet);
+                } else {
+                    guia1CaixaImagemEditada.Image = realce(guia1CaixaImagemImportada, "MEDIANA", valorBorda, valorOffSet);
                 }
             } else {
                 MessageBox.Show("É necessario importar uma imagem primeiro.");
             }
         }
+
+        private void guia1BotaoGaussiano_Click(object sender, EventArgs e) {
+            int valorBorda = 0;
+            if (guia1RadioButtonDuplicar.Checked) {
+                valorBorda = 1;
+            } else {
+                valorBorda = 0;
+            }
+
+            int valorOffSet = 3;
+            if (guia1ComboBoxTamanhoMatriz.Text != null) {
+                valorOffSet = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
+            }
+
+
+            if (guia1CaixaImagemImportada.Image != null) {
+                if (guia1NumeroValorGaussiano.Value != 0) {
+                    if (guia1CaixaImagemEditada.Image != null) {
+                        guia1CaixaImagemEditada.Image = gaussiano(guia1CaixaImagemEditada, valorBorda, valorOffSet, (double)guia1NumeroValorGaussiano.Value);
+                    } else {
+                        guia1CaixaImagemEditada.Image = gaussiano(guia1CaixaImagemImportada, valorBorda, valorOffSet, (double)guia1NumeroValorGaussiano.Value);
+                    }
+                } else {
+                    MessageBox.Show("É necessário informar o valor do desvio padrão.");
+                }
+            } else {
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
+            }
+        }
+
 
         //private Bitmap realce(PictureBox imagemEntrada, String operacao, int borda, int offSet) {
         // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -891,6 +905,126 @@ namespace manipulacao {
             return saida;
         }
 
+        private Bitmap gaussiano(PictureBox imagemEntrada, int borda, int offSet, double sigma) {
+            
+            Bitmap imagemOriginal = (Bitmap)imagemEntrada.Image;
+            offSet = offSet / 2;
+
+            Bitmap saida = new Bitmap(imagemOriginal.Width, imagemOriginal.Height);
+
+            if (borda ==0) {
+                double[,] kernel = new double[offSet * 2 + 1, offSet * 2 + 1];
+                double somaKernel = 0.0;
+
+                // Atribuir valores ao kernel
+                for (int x = -offSet; x <= offSet; x++) {
+                    for (int y = -offSet; y <= offSet; y++) {
+                        double valor = (1.0 / (2.0 * Math.PI * Math.Pow(sigma, 2))) *
+                            Math.Exp(-(Math.Pow(x, 2) + Math.Pow(y, 2)) / (2.0 * Math.Pow(sigma, 2)));
+
+                        kernel[x + offSet, y + offSet] = valor;
+                        somaKernel += valor;
+                    }
+                }
+
+                // Normalizar o kernel
+                for (int x = 0; x < kernel.GetLength(0); x++) {
+                    for (int y = 0; y < kernel.GetLength(1); y++) {
+                        kernel[x, y] /= somaKernel;
+                    }
+                }
+
+                // Aplicar o filtro gaussiano
+                for (int i = offSet; i < imagemOriginal.Width - offSet; i++) {
+                    for (int j = offSet; j < imagemOriginal.Height - offSet; j++) {
+                        double somaR = 0.0, somaG = 0.0, somaB = 0.0;
+
+                        for (int x = -offSet; x <= offSet; x++) {
+                            for (int y = -offSet; y <= offSet; y++) {
+                                Color p = imagemOriginal.GetPixel(i + x, j + y);
+                                somaR += p.R * kernel[x + offSet, y + offSet];
+                                somaG += p.G * kernel[x + offSet, y + offSet];
+                                somaB += p.B * kernel[x + offSet, y + offSet];
+
+                            }
+                        }
+
+                        // Limitar os valores de somaR, somaG e somaB entre 0 e 255
+                        somaR = Math.Max(0, Math.Min(255, somaR));
+                        somaG = Math.Max(0, Math.Min(255, somaG));
+                        somaB = Math.Max(0, Math.Min(255, somaB));
+                        saida.SetPixel(i, j, Color.FromArgb(255, (int)somaR, (int)somaG, (int)somaB));
+                    }
+                }
+
+            } else {
+                Bitmap imagem = expandirImagemComBorda(imagemOriginal, offSet);
+
+                double[,] kernel = new double[offSet * 2 + 1, offSet * 2 + 1];
+                double somaKernel = 0.0;
+                Bitmap imagemKernel = new Bitmap(offSet * 2 + 1, offSet * 2 + 1);
+
+                // Atribuir valores ao kernel
+                for (int x = -offSet; x <= offSet; x++) {
+                    for (int y = -offSet; y <= offSet; y++) {
+                        double valor = (1.0 / (2.0 * Math.PI * Math.Pow(sigma, 2))) *
+                            Math.Exp(-(Math.Pow(x, 2) + Math.Pow(y, 2)) / (2.0 * Math.Pow(sigma, 2)));
+
+                        kernel[x + offSet, y + offSet] = valor;
+                        somaKernel += valor;
+                    }
+                }
+
+                // Criar imagem do kernel
+                for (int x = 0; x < kernel.GetLength(0); x++) {
+                    for (int y = 0; y < kernel.GetLength(1); y++) {
+                        int valor = (int)(kernel[x, y] * 255);
+                        valor = Math.Max(0, Math.Min(255, valor));
+                        imagemKernel.SetPixel(x, y, Color.FromArgb(255, valor, valor, valor));
+                    }
+                }
+
+                // Normalizar o kernel
+                for (int x = 0; x < kernel.GetLength(0); x++) {
+                    for (int y = 0; y < kernel.GetLength(1); y++) {
+                        kernel[x, y] /= somaKernel;
+                    }
+                }
+
+                PictureBox pictureBoxImagemKernel = new PictureBox();
+                pictureBoxImagemKernel.Image = imagemKernel;
+
+                salvarImagem(pictureBoxImagemKernel);
+
+                // Aplicar o filtro gaussiano
+                for (int i = 0; i < imagemOriginal.Width; i++) {
+                    for (int j = 0; j < imagemOriginal.Height; j++) {
+                        double somaR = 0.0, somaG = 0.0, somaB = 0.0;
+
+                        for (int x = -offSet; x <= offSet; x++) {
+                            for (int y = -offSet; y <= offSet; y++) {
+                                Color p = imagem.GetPixel(i + x + offSet, j + y + offSet);
+                                somaR += p.R * kernel[x + offSet, y + offSet];
+                                somaG += p.G * kernel[x + offSet, y + offSet];
+                                somaB += p.B * kernel[x + offSet, y + offSet];
+
+                            }
+                        }
+
+                        // Limitar os valores de somaR, somaG e somaB entre 0 e 255
+                        somaR = Math.Max(0, Math.Min(255, somaR));
+                        somaG = Math.Max(0, Math.Min(255, somaG));
+                        somaB = Math.Max(0, Math.Min(255, somaB));
+                        saida.SetPixel(i, j, Color.FromArgb(255, (int)somaR, (int)somaG, (int)somaB));
+                    }
+                }
+
+                
+            }
+
+            return saida;
+        }
+
         private Bitmap realce(PictureBox imagemEntrada, String operacao, int borda, int offSet) {
             Bitmap imagemOriginal = (Bitmap)imagemEntrada.Image;
             offSet = offSet / 2;
@@ -1037,7 +1171,6 @@ namespace manipulacao {
                                 Array.Sort(vizinhosB);
                                 int meio = vizinhosR.Length / 2;
                                 saida.SetPixel(i, j, Color.FromArgb(255, vizinhosR[meio], vizinhosG[meio], vizinhosB[meio]));
-                                break;
                             break;
                         }
                     }
