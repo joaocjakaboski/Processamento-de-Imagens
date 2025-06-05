@@ -179,7 +179,7 @@ namespace manipulacao {
             }
 
             int valorOffSet = 3;
-            if (guia1ComboBoxTamanhoMatriz.Text != null) {
+            if (guia1ComboBoxTamanhoMatriz.SelectedItem != null) {
                 valorOffSet = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
             }
 
@@ -203,7 +203,7 @@ namespace manipulacao {
             }
 
             int valorOffSet = 3;
-            if (guia1ComboBoxTamanhoMatriz.Text != null) {
+            if (guia1ComboBoxTamanhoMatriz.SelectedItem != null) {
                 valorOffSet = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
             }
 
@@ -227,7 +227,7 @@ namespace manipulacao {
             }
 
             int valorOffSet = 3;
-            if (guia1ComboBoxTamanhoMatriz.Text != null) {
+            if (guia1ComboBoxTamanhoMatriz.SelectedItem != null) {
                 valorOffSet = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
             }
 
@@ -251,7 +251,7 @@ namespace manipulacao {
             }
 
             int valorOffSet = 3;
-            if (guia1ComboBoxTamanhoMatriz.Text != null) {
+            if (guia1ComboBoxTamanhoMatriz.SelectedItem != null) {
                 valorOffSet = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
             }
 
@@ -275,7 +275,7 @@ namespace manipulacao {
             }
 
             int valorOffSet = 3;
-            if (guia1ComboBoxTamanhoMatriz.Text != null) {
+            if (guia1ComboBoxTamanhoMatriz.SelectedItem != null) {
                 valorOffSet = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
             }
 
@@ -295,6 +295,62 @@ namespace manipulacao {
             }
         }
 
+        private void guia1BotaoOrdem_Click(object sender, EventArgs e) {
+            int valorBorda = 0;
+            if (guia1RadioButtonDuplicar.Checked) {
+                valorBorda = 1;
+            } else {
+                valorBorda = 0;
+            }
+
+            int valorOffSet = 3;
+            if (guia1ComboBoxTamanhoMatriz.SelectedItem != null) {
+                valorOffSet = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
+            }
+
+
+            if (guia1CaixaImagemImportada.Image != null) {
+                if (guia1CaixaImagemEditada.Image != null) {
+                    guia1CaixaImagemEditada.Image = filtragemPorOrdem(guia1CaixaImagemEditada, valorOffSet, (int)guia1NumeroValorIdOrdem.Value, valorBorda);
+                } else {
+                    guia1CaixaImagemEditada.Image = filtragemPorOrdem(guia1CaixaImagemImportada, valorOffSet, (int)guia1NumeroValorIdOrdem.Value, valorBorda);
+                }
+            } else {
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
+            }
+        }
+
+        private void guia1BotaoSuavConservativa_Click(object sender, EventArgs e) {
+            int valorBorda = 0;
+            if (guia1RadioButtonDuplicar.Checked) {
+                valorBorda = 1;
+            } else {
+                valorBorda = 0;
+            }
+
+            int valorOffSet = 3;
+            if (guia1ComboBoxTamanhoMatriz.SelectedItem != null) {
+                valorOffSet = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
+            }
+
+
+            if (guia1CaixaImagemImportada.Image != null) {
+                if (guia1CaixaImagemEditada.Image != null) {
+                    guia1CaixaImagemEditada.Image = suavizacaoConsevativa(guia1CaixaImagemEditada, valorOffSet, valorBorda);
+                } else {
+                    guia1CaixaImagemEditada.Image = suavizacaoConsevativa(guia1CaixaImagemImportada, valorOffSet, valorBorda);
+                }
+            } else {
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
+            }
+        }
+
+
+        private void guia1ComboBoxTamanhoMatriz_TextChanged(object sender, EventArgs e) {
+            int maximo = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
+            maximo = maximo * maximo - 1;
+            guia1NumeroValorIdOrdem.Maximum = maximo;
+        }
 
         //private Bitmap realce(PictureBox imagemEntrada, String operacao, int borda, int offSet) {
         // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1180,7 +1236,190 @@ namespace manipulacao {
             return saida;
         }
 
+        private Bitmap filtragemPorOrdem(PictureBox imagemEntrada, int offSet, int idDaOrdem, int borda) {
+            Bitmap imagemOriginal = (Bitmap)imagemEntrada.Image;
+            Bitmap saida = new Bitmap(imagemOriginal.Width, imagemOriginal.Height);
+            offSet = offSet / 2;
 
+            if (borda == 0) {
+                for (int i = offSet; i < imagemOriginal.Width - offSet; i++) {
+                    for (int j = offSet; j < imagemOriginal.Height - offSet; j++) {
+                        int tamanhoJanela = (2 * offSet + 1) * (2 * offSet + 1);
+                        int[] vizinhosR = new int[tamanhoJanela];
+                        int[] vizinhosG = new int[tamanhoJanela];
+                        int[] vizinhosB = new int[tamanhoJanela];
+
+                        int indice = 0;
+                        for (int a = -offSet; a <= offSet; a++) {
+                            for (int b = -offSet; b <= offSet; b++) {
+                                Color p = imagemOriginal.GetPixel(i + a, j + b);
+                                vizinhosR[indice] = p.R;
+                                vizinhosG[indice] = p.G;
+                                vizinhosB[indice] = p.B;
+                                indice++;
+                            }
+                        }
+
+                        Array.Sort(vizinhosR);
+                        Array.Sort(vizinhosG);
+                        Array.Sort(vizinhosB);
+
+                        saida.SetPixel(i, j, Color.FromArgb(255, vizinhosR[idDaOrdem], vizinhosG[idDaOrdem], vizinhosB[idDaOrdem]));
+                    }
+                }
+            } else {
+                // COM TRATAMENTO DE BORDA: expande a imagem
+                Bitmap imagem = expandirImagemComBorda(imagemOriginal, offSet);
+
+                for (int i = 0; i < imagemOriginal.Width; i++) {
+                    for (int j = 0; j < imagemOriginal.Height; j++) {
+                        int tamanhoJanela = (2 * offSet + 1) * (2 * offSet + 1);
+                        int[] vizinhosR = new int[tamanhoJanela];
+                        int[] vizinhosG = new int[tamanhoJanela];
+                        int[] vizinhosB = new int[tamanhoJanela];
+
+                        int indice = 0;
+                        for (int a = -offSet; a <= offSet; a++) {
+                            for (int b = -offSet; b <= offSet; b++) {
+                                Color p = imagem.GetPixel(i + a + offSet, j + b + offSet);
+                                vizinhosR[indice] = p.R;
+                                vizinhosG[indice] = p.G;
+                                vizinhosB[indice] = p.B;
+                                indice++;
+                            }
+                        }
+
+                        Array.Sort(vizinhosR);
+                        Array.Sort(vizinhosG);
+                        Array.Sort(vizinhosB);
+
+                        saida.SetPixel(i, j, Color.FromArgb(255, vizinhosR[idDaOrdem], vizinhosG[idDaOrdem], vizinhosB[idDaOrdem]));
+                    }
+                }
+            }
+
+            return saida;
+        }
+
+
+        private Bitmap suavizacaoConsevativa(PictureBox imagemEntrada, int offSet, int borda) {
+            Bitmap imagemOriginal = (Bitmap)imagemEntrada.Image;
+            Bitmap saida = new Bitmap(imagemOriginal.Width, imagemOriginal.Height);
+            offSet = offSet / 2;
+
+            if (borda == 0) {
+                for (int i = offSet; i < imagemOriginal.Width - offSet; i++) {
+                    for (int j = offSet; j < imagemOriginal.Height - offSet; j++) {
+                        int tamanhoJanela = (2 * offSet + 1) * (2 * offSet + 1);
+                        int[] vizinhosR = new int[tamanhoJanela];
+                        int[] vizinhosG = new int[tamanhoJanela];
+                        int[] vizinhosB = new int[tamanhoJanela];
+
+                        int indice = 0;
+                        for (int a = -offSet; a <= offSet; a++) {
+                            for (int b = -offSet; b <= offSet; b++) {
+                                Color p = imagemOriginal.GetPixel(i + a, j + b);
+                                vizinhosR[indice] = p.R;
+                                vizinhosG[indice] = p.G;
+                                vizinhosB[indice] = p.B;
+                                indice++;
+                            }
+                        }
+
+                        Array.Sort(vizinhosR);
+                        int minR = vizinhosR[0];
+                        int maxR = vizinhosR[vizinhosR.Length-1];
+
+                        Array.Sort(vizinhosG);
+                        int minG = vizinhosG[0];
+                        int maxG = vizinhosG[vizinhosG.Length - 1];
+                        
+                        Array.Sort(vizinhosB);
+                        int minB = vizinhosB[0];
+                        int maxB = vizinhosB[vizinhosB.Length - 1];
+
+
+                        if (vizinhosR[offSet] < minR) {
+                            vizinhosR[offSet] = minR;
+                        } else if (vizinhosR[offSet] > maxR) {
+                            vizinhosR[offSet] = maxR;
+                        }
+
+                        if (vizinhosG[offSet] < minG) {
+                            vizinhosG[offSet] = minG;
+                        } else if (vizinhosG[offSet] > maxG) {
+                            vizinhosG[offSet] = maxG;
+                        }
+
+                        if (vizinhosB[offSet] < minB) {
+                            vizinhosB[offSet] = minB;
+                        } else if (vizinhosB[offSet] > maxB) {
+                            vizinhosB[offSet] = maxB;
+                        }
+
+                        saida.SetPixel(i, j, Color.FromArgb(255, vizinhosR[offSet], vizinhosG[offSet], vizinhosB[offSet]));
+                    }
+                }
+            } else {
+                // COM TRATAMENTO DE BORDA: expande a imagem
+                Bitmap imagem = expandirImagemComBorda(imagemOriginal, offSet);
+
+                for (int i = 0; i < imagemOriginal.Width; i++) {
+                    for (int j = 0; j < imagemOriginal.Height; j++) {
+                        int tamanhoJanela = (2 * offSet + 1) * (2 * offSet + 1);
+                        int[] vizinhosR = new int[tamanhoJanela];
+                        int[] vizinhosG = new int[tamanhoJanela];
+                        int[] vizinhosB = new int[tamanhoJanela];
+
+                        int indice = 0;
+                        for (int a = -offSet; a <= offSet; a++) {
+                            for (int b = -offSet; b <= offSet; b++) {
+                                Color p = imagem.GetPixel(i + a + offSet, j + b + offSet);
+                                vizinhosR[indice] = p.R;
+                                vizinhosG[indice] = p.G;
+                                vizinhosB[indice] = p.B;
+                                indice++;
+                            }
+                        }
+
+                        Array.Sort(vizinhosR);
+                        int minR = vizinhosR[0];
+                        int maxR = vizinhosR[vizinhosR.Length - 1];
+
+                        Array.Sort(vizinhosG);
+                        int minG = vizinhosG[0];
+                        int maxG = vizinhosG[vizinhosG.Length - 1];
+
+                        Array.Sort(vizinhosB);
+                        int minB = vizinhosB[0];
+                        int maxB = vizinhosB[vizinhosB.Length - 1];
+
+
+                        if (vizinhosR[offSet] < minR) {
+                            vizinhosR[offSet] = minR;
+                        } else if (vizinhosR[offSet] > maxR) {
+                            vizinhosR[offSet] = maxR;
+                        }
+
+                        if (vizinhosG[offSet] < minG) {
+                            vizinhosG[offSet] = minG;
+                        } else if (vizinhosG[offSet] > maxG) {
+                            vizinhosG[offSet] = maxG;
+                        }
+
+                        if (vizinhosB[offSet] < minB) {
+                            vizinhosB[offSet] = minB;
+                        } else if (vizinhosB[offSet] > maxB) {
+                            vizinhosB[offSet] = maxB;
+                        }
+
+                        saida.SetPixel(i, j, Color.FromArgb(255, vizinhosR[offSet], vizinhosG[offSet], vizinhosB[offSet]));
+                    }
+                }
+            }
+
+            return saida;
+        }
 
         private Bitmap expandirImagemComBorda(Bitmap original, int offSet) {
             int larguraNova = original.Width + 2 * offSet;
@@ -1196,7 +1435,6 @@ namespace manipulacao {
                     expandida.SetPixel(x, y, cor);
                 }
             }
-
             return expandida;
         }
 

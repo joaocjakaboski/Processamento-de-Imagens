@@ -23,12 +23,12 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.guia3CombinacaoLinear = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.guia3EntradaBlending = new System.Windows.Forms.NumericUpDown();
@@ -60,7 +60,27 @@
             this.guia2BotaoImportarImagem1 = new System.Windows.Forms.Button();
             this.guia4 = new System.Windows.Forms.TabControl();
             this.guia1Brilho = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.guia1BotaoEspelharHorizontalmente = new System.Windows.Forms.Button();
+            this.guia1BotaoEspelharVerticalmente = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.guia1BotaoLimiarizar = new System.Windows.Forms.Button();
+            this.guia1EntradaLimiarizacao = new System.Windows.Forms.NumericUpDown();
+            this.guia1BotaoConverterParaCinza = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.guia1EntradaValorContraste = new System.Windows.Forms.NumericUpDown();
+            this.guia1BotaoRemoverContraste = new System.Windows.Forms.Button();
+            this.guia1BotaoAdicionarContraste = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.guia1EntradaValorBrilho = new System.Windows.Forms.NumericUpDown();
+            this.guia1BotaoAdicionarBrilho = new System.Windows.Forms.Button();
+            this.guia1BotaoRemoverBrilho = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.guia1NumeroValorIdOrdem = new System.Windows.Forms.NumericUpDown();
+            this.guia1BotaoOrdem = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.guia1NumeroValorGaussiano = new System.Windows.Forms.NumericUpDown();
             this.guia1BotaoGaussiano = new System.Windows.Forms.Button();
             this.guia1BotaoMediana = new System.Windows.Forms.Button();
@@ -73,14 +93,6 @@
             this.guia1BotaoMean = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.guia1BotaoEqualizar = new System.Windows.Forms.Button();
-            this.guia1BotaoConverterParaCinza = new System.Windows.Forms.Button();
-            this.guia1BotaoEspelharHorizontalmente = new System.Windows.Forms.Button();
-            this.guia1BotaoEspelharVerticalmente = new System.Windows.Forms.Button();
-            this.guia1BotaoLimiarizar = new System.Windows.Forms.Button();
-            this.guia1EntradaLimiarizacao = new System.Windows.Forms.NumericUpDown();
-            this.guia1BotaoRemoverBrilho = new System.Windows.Forms.Button();
-            this.guia1BotaoAdicionarBrilho = new System.Windows.Forms.Button();
-            this.guia1EntradaValorBrilho = new System.Windows.Forms.NumericUpDown();
             this.guia1ChartHistrogramaFinal = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.guia1ChartHistrogramaOriginal = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.guia1BotaoReiniciarImagem = new System.Windows.Forms.Button();
@@ -89,15 +101,7 @@
             this.guia1CaixaImagemImportada = new System.Windows.Forms.PictureBox();
             this.guia1BotaoImportarImagem = new System.Windows.Forms.Button();
             this.guia1CaixaImagemEditada = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.guia1BotaoAdicionarContraste = new System.Windows.Forms.Button();
-            this.guia1BotaoRemoverContraste = new System.Windows.Forms.Button();
-            this.guia1EntradaValorContraste = new System.Windows.Forms.NumericUpDown();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.guia1BotaoSuavConservativa = new System.Windows.Forms.Button();
             this.guia3CombinacaoLinear.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guia3EntradaBlending)).BeginInit();
@@ -112,20 +116,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.guia2CaixaImagemImportada1)).BeginInit();
             this.guia4.SuspendLayout();
             this.guia1Brilho.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guia1EntradaLimiarizacao)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guia1EntradaValorContraste)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guia1EntradaValorBrilho)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guia1NumeroValorIdOrdem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guia1NumeroValorGaussiano)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guia1EntradaLimiarizacao)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guia1EntradaValorBrilho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guia1ChartHistrogramaFinal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guia1ChartHistrogramaOriginal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guia1CaixaImagemImportada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guia1CaixaImagemEditada)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guia1EntradaValorContraste)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // guia3CombinacaoLinear
@@ -504,8 +509,178 @@
             this.guia1Brilho.Text = "Brilho";
             this.guia1Brilho.UseVisualStyleBackColor = true;
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.guia1BotaoEspelharHorizontalmente);
+            this.groupBox7.Controls.Add(this.guia1BotaoEspelharVerticalmente);
+            this.groupBox7.Location = new System.Drawing.Point(412, 317);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(170, 132);
+            this.groupBox7.TabIndex = 37;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Posicionamento";
+            // 
+            // guia1BotaoEspelharHorizontalmente
+            // 
+            this.guia1BotaoEspelharHorizontalmente.Location = new System.Drawing.Point(6, 19);
+            this.guia1BotaoEspelharHorizontalmente.Name = "guia1BotaoEspelharHorizontalmente";
+            this.guia1BotaoEspelharHorizontalmente.Padding = new System.Windows.Forms.Padding(5);
+            this.guia1BotaoEspelharHorizontalmente.Size = new System.Drawing.Size(154, 35);
+            this.guia1BotaoEspelharHorizontalmente.TabIndex = 14;
+            this.guia1BotaoEspelharHorizontalmente.Text = "Espelhar na horizontal";
+            this.guia1BotaoEspelharHorizontalmente.UseVisualStyleBackColor = true;
+            this.guia1BotaoEspelharHorizontalmente.Click += new System.EventHandler(this.guia1BotaoEspelharHorizontalmente_Click);
+            // 
+            // guia1BotaoEspelharVerticalmente
+            // 
+            this.guia1BotaoEspelharVerticalmente.Location = new System.Drawing.Point(6, 60);
+            this.guia1BotaoEspelharVerticalmente.Name = "guia1BotaoEspelharVerticalmente";
+            this.guia1BotaoEspelharVerticalmente.Padding = new System.Windows.Forms.Padding(5);
+            this.guia1BotaoEspelharVerticalmente.Size = new System.Drawing.Size(154, 35);
+            this.guia1BotaoEspelharVerticalmente.TabIndex = 15;
+            this.guia1BotaoEspelharVerticalmente.Text = "Espelhar na vertical";
+            this.guia1BotaoEspelharVerticalmente.UseVisualStyleBackColor = true;
+            this.guia1BotaoEspelharVerticalmente.Click += new System.EventHandler(this.guia1BotaoEspelharVerticalmente_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.guia1BotaoLimiarizar);
+            this.groupBox6.Controls.Add(this.guia1EntradaLimiarizacao);
+            this.groupBox6.Controls.Add(this.guia1BotaoConverterParaCinza);
+            this.groupBox6.Location = new System.Drawing.Point(412, 180);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(170, 131);
+            this.groupBox6.TabIndex = 36;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Conversões";
+            // 
+            // guia1BotaoLimiarizar
+            // 
+            this.guia1BotaoLimiarizar.Location = new System.Drawing.Point(6, 45);
+            this.guia1BotaoLimiarizar.Name = "guia1BotaoLimiarizar";
+            this.guia1BotaoLimiarizar.Padding = new System.Windows.Forms.Padding(5);
+            this.guia1BotaoLimiarizar.Size = new System.Drawing.Size(154, 35);
+            this.guia1BotaoLimiarizar.TabIndex = 20;
+            this.guia1BotaoLimiarizar.Text = "Limiarizar";
+            this.guia1BotaoLimiarizar.UseVisualStyleBackColor = true;
+            this.guia1BotaoLimiarizar.Click += new System.EventHandler(this.guia1BotaoLimiarizar_Click);
+            // 
+            // guia1EntradaLimiarizacao
+            // 
+            this.guia1EntradaLimiarizacao.Location = new System.Drawing.Point(6, 19);
+            this.guia1EntradaLimiarizacao.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.guia1EntradaLimiarizacao.Name = "guia1EntradaLimiarizacao";
+            this.guia1EntradaLimiarizacao.Size = new System.Drawing.Size(154, 20);
+            this.guia1EntradaLimiarizacao.TabIndex = 21;
+            // 
+            // guia1BotaoConverterParaCinza
+            // 
+            this.guia1BotaoConverterParaCinza.Location = new System.Drawing.Point(6, 86);
+            this.guia1BotaoConverterParaCinza.Name = "guia1BotaoConverterParaCinza";
+            this.guia1BotaoConverterParaCinza.Padding = new System.Windows.Forms.Padding(5);
+            this.guia1BotaoConverterParaCinza.Size = new System.Drawing.Size(154, 35);
+            this.guia1BotaoConverterParaCinza.TabIndex = 13;
+            this.guia1BotaoConverterParaCinza.Text = "Converter p/ Cinza";
+            this.guia1BotaoConverterParaCinza.UseVisualStyleBackColor = true;
+            this.guia1BotaoConverterParaCinza.Click += new System.EventHandler(this.guia1BotaoConverterParaCinza_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.guia1EntradaValorContraste);
+            this.groupBox5.Controls.Add(this.guia1BotaoRemoverContraste);
+            this.groupBox5.Controls.Add(this.guia1BotaoAdicionarContraste);
+            this.groupBox5.Location = new System.Drawing.Point(588, 43);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(170, 131);
+            this.groupBox5.TabIndex = 35;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Contraste";
+            // 
+            // guia1EntradaValorContraste
+            // 
+            this.guia1EntradaValorContraste.Location = new System.Drawing.Point(8, 19);
+            this.guia1EntradaValorContraste.Name = "guia1EntradaValorContraste";
+            this.guia1EntradaValorContraste.Size = new System.Drawing.Size(154, 20);
+            this.guia1EntradaValorContraste.TabIndex = 19;
+            // 
+            // guia1BotaoRemoverContraste
+            // 
+            this.guia1BotaoRemoverContraste.Location = new System.Drawing.Point(8, 86);
+            this.guia1BotaoRemoverContraste.Name = "guia1BotaoRemoverContraste";
+            this.guia1BotaoRemoverContraste.Padding = new System.Windows.Forms.Padding(5);
+            this.guia1BotaoRemoverContraste.Size = new System.Drawing.Size(154, 35);
+            this.guia1BotaoRemoverContraste.TabIndex = 18;
+            this.guia1BotaoRemoverContraste.Text = "Remover contraste";
+            this.guia1BotaoRemoverContraste.UseVisualStyleBackColor = true;
+            this.guia1BotaoRemoverContraste.Click += new System.EventHandler(this.guia1BotaoRemoverContraste_Click);
+            // 
+            // guia1BotaoAdicionarContraste
+            // 
+            this.guia1BotaoAdicionarContraste.Location = new System.Drawing.Point(8, 45);
+            this.guia1BotaoAdicionarContraste.Name = "guia1BotaoAdicionarContraste";
+            this.guia1BotaoAdicionarContraste.Padding = new System.Windows.Forms.Padding(5);
+            this.guia1BotaoAdicionarContraste.Size = new System.Drawing.Size(154, 35);
+            this.guia1BotaoAdicionarContraste.TabIndex = 17;
+            this.guia1BotaoAdicionarContraste.Text = "Adicionar contraste";
+            this.guia1BotaoAdicionarContraste.UseVisualStyleBackColor = true;
+            this.guia1BotaoAdicionarContraste.Click += new System.EventHandler(this.guia1BotaoAdicionarContraste_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.guia1EntradaValorBrilho);
+            this.groupBox4.Controls.Add(this.guia1BotaoAdicionarBrilho);
+            this.groupBox4.Controls.Add(this.guia1BotaoRemoverBrilho);
+            this.groupBox4.Location = new System.Drawing.Point(412, 43);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(170, 131);
+            this.groupBox4.TabIndex = 34;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Brilho";
+            // 
+            // guia1EntradaValorBrilho
+            // 
+            this.guia1EntradaValorBrilho.Location = new System.Drawing.Point(6, 19);
+            this.guia1EntradaValorBrilho.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.guia1EntradaValorBrilho.Name = "guia1EntradaValorBrilho";
+            this.guia1EntradaValorBrilho.Size = new System.Drawing.Size(154, 20);
+            this.guia1EntradaValorBrilho.TabIndex = 6;
+            // 
+            // guia1BotaoAdicionarBrilho
+            // 
+            this.guia1BotaoAdicionarBrilho.Location = new System.Drawing.Point(6, 45);
+            this.guia1BotaoAdicionarBrilho.Name = "guia1BotaoAdicionarBrilho";
+            this.guia1BotaoAdicionarBrilho.Padding = new System.Windows.Forms.Padding(5);
+            this.guia1BotaoAdicionarBrilho.Size = new System.Drawing.Size(154, 35);
+            this.guia1BotaoAdicionarBrilho.TabIndex = 3;
+            this.guia1BotaoAdicionarBrilho.Text = "Adicionar brilho";
+            this.guia1BotaoAdicionarBrilho.UseVisualStyleBackColor = true;
+            this.guia1BotaoAdicionarBrilho.Click += new System.EventHandler(this.guia1BotaoAdicionarBrilho_Click);
+            // 
+            // guia1BotaoRemoverBrilho
+            // 
+            this.guia1BotaoRemoverBrilho.Location = new System.Drawing.Point(6, 86);
+            this.guia1BotaoRemoverBrilho.Name = "guia1BotaoRemoverBrilho";
+            this.guia1BotaoRemoverBrilho.Padding = new System.Windows.Forms.Padding(5);
+            this.guia1BotaoRemoverBrilho.Size = new System.Drawing.Size(154, 35);
+            this.guia1BotaoRemoverBrilho.TabIndex = 4;
+            this.guia1BotaoRemoverBrilho.Text = "Remover brilho";
+            this.guia1BotaoRemoverBrilho.UseVisualStyleBackColor = true;
+            this.guia1BotaoRemoverBrilho.Click += new System.EventHandler(this.guia1BotaoRemoverBrilho_Click);
+            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.guia1BotaoSuavConservativa);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.guia1NumeroValorIdOrdem);
+            this.groupBox3.Controls.Add(this.guia1BotaoOrdem);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.guia1NumeroValorGaussiano);
@@ -524,12 +699,64 @@
             this.groupBox3.Size = new System.Drawing.Size(281, 269);
             this.groupBox3.TabIndex = 33;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Realce";
+            this.groupBox3.Text = "Filtros Passa-Baixa";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(94, 155);
+            this.label4.Margin = new System.Windows.Forms.Padding(3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.TabIndex = 39;
+            this.label4.Text = "Índice:";
+            // 
+            // guia1NumeroValorIdOrdem
+            // 
+            this.guia1NumeroValorIdOrdem.Location = new System.Drawing.Point(183, 153);
+            this.guia1NumeroValorIdOrdem.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.guia1NumeroValorIdOrdem.Name = "guia1NumeroValorIdOrdem";
+            this.guia1NumeroValorIdOrdem.Size = new System.Drawing.Size(76, 20);
+            this.guia1NumeroValorIdOrdem.TabIndex = 38;
+            this.guia1NumeroValorIdOrdem.ThousandsSeparator = true;
+            // 
+            // guia1BotaoOrdem
+            // 
+            this.guia1BotaoOrdem.Location = new System.Drawing.Point(8, 144);
+            this.guia1BotaoOrdem.Name = "guia1BotaoOrdem";
+            this.guia1BotaoOrdem.Size = new System.Drawing.Size(80, 35);
+            this.guia1BotaoOrdem.TabIndex = 37;
+            this.guia1BotaoOrdem.Text = "Ordem";
+            this.guia1BotaoOrdem.UseVisualStyleBackColor = true;
+            this.guia1BotaoOrdem.Click += new System.EventHandler(this.guia1BotaoOrdem_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(94, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "Matriz:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(94, 196);
+            this.label2.Margin = new System.Windows.Forms.Padding(3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "Desvio padrão:";
             // 
             // guia1NumeroValorGaussiano
             // 
             this.guia1NumeroValorGaussiano.DecimalPlaces = 1;
-            this.guia1NumeroValorGaussiano.Location = new System.Drawing.Point(183, 118);
+            this.guia1NumeroValorGaussiano.Location = new System.Drawing.Point(183, 194);
             this.guia1NumeroValorGaussiano.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -542,11 +769,11 @@
             // 
             // guia1BotaoGaussiano
             // 
-            this.guia1BotaoGaussiano.Location = new System.Drawing.Point(94, 103);
+            this.guia1BotaoGaussiano.Location = new System.Drawing.Point(8, 185);
             this.guia1BotaoGaussiano.Name = "guia1BotaoGaussiano";
             this.guia1BotaoGaussiano.Size = new System.Drawing.Size(80, 35);
             this.guia1BotaoGaussiano.TabIndex = 31;
-            this.guia1BotaoGaussiano.Text = "GAUSSIANO";
+            this.guia1BotaoGaussiano.Text = "Gaussiano";
             this.guia1BotaoGaussiano.UseVisualStyleBackColor = true;
             this.guia1BotaoGaussiano.Click += new System.EventHandler(this.guia1BotaoGaussiano_Click);
             // 
@@ -556,7 +783,7 @@
             this.guia1BotaoMediana.Name = "guia1BotaoMediana";
             this.guia1BotaoMediana.Size = new System.Drawing.Size(80, 35);
             this.guia1BotaoMediana.TabIndex = 30;
-            this.guia1BotaoMediana.Text = "MEDIANA";
+            this.guia1BotaoMediana.Text = "Mediana";
             this.guia1BotaoMediana.UseVisualStyleBackColor = true;
             this.guia1BotaoMediana.Click += new System.EventHandler(this.guia1BotaoMediana_Click);
             // 
@@ -580,6 +807,7 @@
             this.guia1ComboBoxTamanhoMatriz.Name = "guia1ComboBoxTamanhoMatriz";
             this.guia1ComboBoxTamanhoMatriz.Size = new System.Drawing.Size(64, 21);
             this.guia1ComboBoxTamanhoMatriz.TabIndex = 29;
+            this.guia1ComboBoxTamanhoMatriz.TextChanged += new System.EventHandler(this.guia1ComboBoxTamanhoMatriz_TextChanged);
             // 
             // guia1RadioButtonIgnorar
             // 
@@ -619,7 +847,7 @@
             this.guia1BotaoMax.Name = "guia1BotaoMax";
             this.guia1BotaoMax.Size = new System.Drawing.Size(80, 35);
             this.guia1BotaoMax.TabIndex = 25;
-            this.guia1BotaoMax.Text = "MAX";
+            this.guia1BotaoMax.Text = "Max";
             this.guia1BotaoMax.UseVisualStyleBackColor = true;
             this.guia1BotaoMax.Click += new System.EventHandler(this.guia1BotaoMax_Click);
             // 
@@ -629,7 +857,7 @@
             this.guia1BotaoMin.Name = "guia1BotaoMin";
             this.guia1BotaoMin.Size = new System.Drawing.Size(80, 35);
             this.guia1BotaoMin.TabIndex = 24;
-            this.guia1BotaoMin.Text = "MIN";
+            this.guia1BotaoMin.Text = "Min";
             this.guia1BotaoMin.UseVisualStyleBackColor = true;
             this.guia1BotaoMin.Click += new System.EventHandler(this.guia1BotaoMin_Click);
             // 
@@ -639,7 +867,7 @@
             this.guia1BotaoMean.Name = "guia1BotaoMean";
             this.guia1BotaoMean.Size = new System.Drawing.Size(80, 35);
             this.guia1BotaoMean.TabIndex = 23;
-            this.guia1BotaoMean.Text = "MEAN";
+            this.guia1BotaoMean.Text = "Mean";
             this.guia1BotaoMean.UseVisualStyleBackColor = true;
             this.guia1BotaoMean.Click += new System.EventHandler(this.guia1BotaoMean_Click);
             // 
@@ -664,108 +892,18 @@
             this.guia1BotaoEqualizar.UseVisualStyleBackColor = true;
             this.guia1BotaoEqualizar.Click += new System.EventHandler(this.guia1BotaoEqualizar_Click);
             // 
-            // guia1BotaoConverterParaCinza
-            // 
-            this.guia1BotaoConverterParaCinza.Location = new System.Drawing.Point(6, 86);
-            this.guia1BotaoConverterParaCinza.Name = "guia1BotaoConverterParaCinza";
-            this.guia1BotaoConverterParaCinza.Padding = new System.Windows.Forms.Padding(5);
-            this.guia1BotaoConverterParaCinza.Size = new System.Drawing.Size(154, 35);
-            this.guia1BotaoConverterParaCinza.TabIndex = 13;
-            this.guia1BotaoConverterParaCinza.Text = "Converter p/ Cinza";
-            this.guia1BotaoConverterParaCinza.UseVisualStyleBackColor = true;
-            this.guia1BotaoConverterParaCinza.Click += new System.EventHandler(this.guia1BotaoConverterParaCinza_Click);
-            // 
-            // guia1BotaoEspelharHorizontalmente
-            // 
-            this.guia1BotaoEspelharHorizontalmente.Location = new System.Drawing.Point(6, 19);
-            this.guia1BotaoEspelharHorizontalmente.Name = "guia1BotaoEspelharHorizontalmente";
-            this.guia1BotaoEspelharHorizontalmente.Padding = new System.Windows.Forms.Padding(5);
-            this.guia1BotaoEspelharHorizontalmente.Size = new System.Drawing.Size(154, 35);
-            this.guia1BotaoEspelharHorizontalmente.TabIndex = 14;
-            this.guia1BotaoEspelharHorizontalmente.Text = "Espelhar na horizontal";
-            this.guia1BotaoEspelharHorizontalmente.UseVisualStyleBackColor = true;
-            this.guia1BotaoEspelharHorizontalmente.Click += new System.EventHandler(this.guia1BotaoEspelharHorizontalmente_Click);
-            // 
-            // guia1BotaoEspelharVerticalmente
-            // 
-            this.guia1BotaoEspelharVerticalmente.Location = new System.Drawing.Point(6, 60);
-            this.guia1BotaoEspelharVerticalmente.Name = "guia1BotaoEspelharVerticalmente";
-            this.guia1BotaoEspelharVerticalmente.Padding = new System.Windows.Forms.Padding(5);
-            this.guia1BotaoEspelharVerticalmente.Size = new System.Drawing.Size(154, 35);
-            this.guia1BotaoEspelharVerticalmente.TabIndex = 15;
-            this.guia1BotaoEspelharVerticalmente.Text = "Espelhar na vertical";
-            this.guia1BotaoEspelharVerticalmente.UseVisualStyleBackColor = true;
-            this.guia1BotaoEspelharVerticalmente.Click += new System.EventHandler(this.guia1BotaoEspelharVerticalmente_Click);
-            // 
-            // guia1BotaoLimiarizar
-            // 
-            this.guia1BotaoLimiarizar.Location = new System.Drawing.Point(6, 45);
-            this.guia1BotaoLimiarizar.Name = "guia1BotaoLimiarizar";
-            this.guia1BotaoLimiarizar.Padding = new System.Windows.Forms.Padding(5);
-            this.guia1BotaoLimiarizar.Size = new System.Drawing.Size(154, 35);
-            this.guia1BotaoLimiarizar.TabIndex = 20;
-            this.guia1BotaoLimiarizar.Text = "Limiarizar";
-            this.guia1BotaoLimiarizar.UseVisualStyleBackColor = true;
-            this.guia1BotaoLimiarizar.Click += new System.EventHandler(this.guia1BotaoLimiarizar_Click);
-            // 
-            // guia1EntradaLimiarizacao
-            // 
-            this.guia1EntradaLimiarizacao.Location = new System.Drawing.Point(6, 19);
-            this.guia1EntradaLimiarizacao.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.guia1EntradaLimiarizacao.Name = "guia1EntradaLimiarizacao";
-            this.guia1EntradaLimiarizacao.Size = new System.Drawing.Size(154, 20);
-            this.guia1EntradaLimiarizacao.TabIndex = 21;
-            // 
-            // guia1BotaoRemoverBrilho
-            // 
-            this.guia1BotaoRemoverBrilho.Location = new System.Drawing.Point(6, 86);
-            this.guia1BotaoRemoverBrilho.Name = "guia1BotaoRemoverBrilho";
-            this.guia1BotaoRemoverBrilho.Padding = new System.Windows.Forms.Padding(5);
-            this.guia1BotaoRemoverBrilho.Size = new System.Drawing.Size(154, 35);
-            this.guia1BotaoRemoverBrilho.TabIndex = 4;
-            this.guia1BotaoRemoverBrilho.Text = "Remover brilho";
-            this.guia1BotaoRemoverBrilho.UseVisualStyleBackColor = true;
-            this.guia1BotaoRemoverBrilho.Click += new System.EventHandler(this.guia1BotaoRemoverBrilho_Click);
-            // 
-            // guia1BotaoAdicionarBrilho
-            // 
-            this.guia1BotaoAdicionarBrilho.Location = new System.Drawing.Point(6, 45);
-            this.guia1BotaoAdicionarBrilho.Name = "guia1BotaoAdicionarBrilho";
-            this.guia1BotaoAdicionarBrilho.Padding = new System.Windows.Forms.Padding(5);
-            this.guia1BotaoAdicionarBrilho.Size = new System.Drawing.Size(154, 35);
-            this.guia1BotaoAdicionarBrilho.TabIndex = 3;
-            this.guia1BotaoAdicionarBrilho.Text = "Adicionar brilho";
-            this.guia1BotaoAdicionarBrilho.UseVisualStyleBackColor = true;
-            this.guia1BotaoAdicionarBrilho.Click += new System.EventHandler(this.guia1BotaoAdicionarBrilho_Click);
-            // 
-            // guia1EntradaValorBrilho
-            // 
-            this.guia1EntradaValorBrilho.Location = new System.Drawing.Point(6, 19);
-            this.guia1EntradaValorBrilho.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.guia1EntradaValorBrilho.Name = "guia1EntradaValorBrilho";
-            this.guia1EntradaValorBrilho.Size = new System.Drawing.Size(154, 20);
-            this.guia1EntradaValorBrilho.TabIndex = 6;
-            // 
             // guia1ChartHistrogramaFinal
             // 
-            chartArea13.Name = "ChartArea1";
-            this.guia1ChartHistrogramaFinal.ChartAreas.Add(chartArea13);
-            legend13.Name = "Legend1";
-            this.guia1ChartHistrogramaFinal.Legends.Add(legend13);
+            chartArea1.Name = "ChartArea1";
+            this.guia1ChartHistrogramaFinal.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.guia1ChartHistrogramaFinal.Legends.Add(legend1);
             this.guia1ChartHistrogramaFinal.Location = new System.Drawing.Point(3, 784);
             this.guia1ChartHistrogramaFinal.Name = "guia1ChartHistrogramaFinal";
-            series13.ChartArea = "ChartArea1";
-            series13.Legend = "Legend1";
-            series13.Name = "Series1";
-            this.guia1ChartHistrogramaFinal.Series.Add(series13);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.guia1ChartHistrogramaFinal.Series.Add(series1);
             this.guia1ChartHistrogramaFinal.Size = new System.Drawing.Size(1879, 189);
             this.guia1ChartHistrogramaFinal.TabIndex = 24;
             this.guia1ChartHistrogramaFinal.Text = "Histograma Final";
@@ -773,16 +911,16 @@
             // 
             // guia1ChartHistrogramaOriginal
             // 
-            chartArea14.Name = "ChartArea1";
-            this.guia1ChartHistrogramaOriginal.ChartAreas.Add(chartArea14);
-            legend14.Name = "Legend1";
-            this.guia1ChartHistrogramaOriginal.Legends.Add(legend14);
+            chartArea2.Name = "ChartArea1";
+            this.guia1ChartHistrogramaOriginal.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.guia1ChartHistrogramaOriginal.Legends.Add(legend2);
             this.guia1ChartHistrogramaOriginal.Location = new System.Drawing.Point(3, 589);
             this.guia1ChartHistrogramaOriginal.Name = "guia1ChartHistrogramaOriginal";
-            series14.ChartArea = "ChartArea1";
-            series14.Legend = "Legend1";
-            series14.Name = "Series1";
-            this.guia1ChartHistrogramaOriginal.Series.Add(series14);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.guia1ChartHistrogramaOriginal.Series.Add(series2);
             this.guia1ChartHistrogramaOriginal.Size = new System.Drawing.Size(1879, 189);
             this.guia1ChartHistrogramaOriginal.TabIndex = 23;
             this.guia1ChartHistrogramaOriginal.Text = "Histograma Original";
@@ -846,100 +984,15 @@
             this.guia1CaixaImagemEditada.TabIndex = 2;
             this.guia1CaixaImagemEditada.TabStop = false;
             // 
-            // label2
+            // guia1BotaoSuavConservativa
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(180, 103);
-            this.label2.Margin = new System.Windows.Forms.Padding(3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 13);
-            this.label2.TabIndex = 35;
-            this.label2.Text = "Desvio padrão:";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.guia1EntradaValorBrilho);
-            this.groupBox4.Controls.Add(this.guia1BotaoAdicionarBrilho);
-            this.groupBox4.Controls.Add(this.guia1BotaoRemoverBrilho);
-            this.groupBox4.Location = new System.Drawing.Point(412, 43);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(170, 131);
-            this.groupBox4.TabIndex = 34;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Brilho";
-            // 
-            // guia1BotaoAdicionarContraste
-            // 
-            this.guia1BotaoAdicionarContraste.Location = new System.Drawing.Point(8, 45);
-            this.guia1BotaoAdicionarContraste.Name = "guia1BotaoAdicionarContraste";
-            this.guia1BotaoAdicionarContraste.Padding = new System.Windows.Forms.Padding(5);
-            this.guia1BotaoAdicionarContraste.Size = new System.Drawing.Size(154, 35);
-            this.guia1BotaoAdicionarContraste.TabIndex = 17;
-            this.guia1BotaoAdicionarContraste.Text = "Adicionar contraste";
-            this.guia1BotaoAdicionarContraste.UseVisualStyleBackColor = true;
-            this.guia1BotaoAdicionarContraste.Click += new System.EventHandler(this.guia1BotaoAdicionarContraste_Click);
-            // 
-            // guia1BotaoRemoverContraste
-            // 
-            this.guia1BotaoRemoverContraste.Location = new System.Drawing.Point(8, 86);
-            this.guia1BotaoRemoverContraste.Name = "guia1BotaoRemoverContraste";
-            this.guia1BotaoRemoverContraste.Padding = new System.Windows.Forms.Padding(5);
-            this.guia1BotaoRemoverContraste.Size = new System.Drawing.Size(154, 35);
-            this.guia1BotaoRemoverContraste.TabIndex = 18;
-            this.guia1BotaoRemoverContraste.Text = "Remover contraste";
-            this.guia1BotaoRemoverContraste.UseVisualStyleBackColor = true;
-            this.guia1BotaoRemoverContraste.Click += new System.EventHandler(this.guia1BotaoRemoverContraste_Click);
-            // 
-            // guia1EntradaValorContraste
-            // 
-            this.guia1EntradaValorContraste.Location = new System.Drawing.Point(8, 19);
-            this.guia1EntradaValorContraste.Name = "guia1EntradaValorContraste";
-            this.guia1EntradaValorContraste.Size = new System.Drawing.Size(154, 20);
-            this.guia1EntradaValorContraste.TabIndex = 19;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.guia1EntradaValorContraste);
-            this.groupBox5.Controls.Add(this.guia1BotaoRemoverContraste);
-            this.groupBox5.Controls.Add(this.guia1BotaoAdicionarContraste);
-            this.groupBox5.Location = new System.Drawing.Point(588, 43);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(170, 131);
-            this.groupBox5.TabIndex = 35;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Contraste";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.guia1BotaoLimiarizar);
-            this.groupBox6.Controls.Add(this.guia1EntradaLimiarizacao);
-            this.groupBox6.Controls.Add(this.guia1BotaoConverterParaCinza);
-            this.groupBox6.Location = new System.Drawing.Point(412, 180);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(170, 131);
-            this.groupBox6.TabIndex = 36;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Conversões";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.guia1BotaoEspelharHorizontalmente);
-            this.groupBox7.Controls.Add(this.guia1BotaoEspelharVerticalmente);
-            this.groupBox7.Location = new System.Drawing.Point(412, 317);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(170, 132);
-            this.groupBox7.TabIndex = 37;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Posicionamento";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(94, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "Matriz:";
+            this.guia1BotaoSuavConservativa.Location = new System.Drawing.Point(8, 226);
+            this.guia1BotaoSuavConservativa.Name = "guia1BotaoSuavConservativa";
+            this.guia1BotaoSuavConservativa.Size = new System.Drawing.Size(263, 35);
+            this.guia1BotaoSuavConservativa.TabIndex = 40;
+            this.guia1BotaoSuavConservativa.Text = "Suavização Conservativa";
+            this.guia1BotaoSuavConservativa.UseVisualStyleBackColor = true;
+            this.guia1BotaoSuavConservativa.Click += new System.EventHandler(this.guia1BotaoSuavConservativa_Click);
             // 
             // Form1
             // 
@@ -965,21 +1018,22 @@
             this.guia4.ResumeLayout(false);
             this.guia1Brilho.ResumeLayout(false);
             this.guia1Brilho.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guia1EntradaLimiarizacao)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guia1EntradaValorContraste)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guia1EntradaValorBrilho)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guia1NumeroValorIdOrdem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guia1NumeroValorGaussiano)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guia1EntradaLimiarizacao)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guia1EntradaValorBrilho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guia1ChartHistrogramaFinal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guia1ChartHistrogramaOriginal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guia1CaixaImagemImportada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guia1CaixaImagemEditada)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guia1EntradaValorContraste)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1055,6 +1109,10 @@
         private System.Windows.Forms.Button guia1BotaoAdicionarContraste;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button guia1BotaoOrdem;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown guia1NumeroValorIdOrdem;
+        private System.Windows.Forms.Button guia1BotaoSuavConservativa;
     }
 }
 
