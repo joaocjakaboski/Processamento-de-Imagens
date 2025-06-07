@@ -35,6 +35,7 @@ namespace manipulacao {
         // Guia 1
 
         private void guia1BotaoImportarImagem_Click(object sender, EventArgs e) {
+            esconderGraficos();
             carregarImagem(guia1CaixaImagemImportada);
             guia1CaixaImagemEditada.Image = guia1CaixaImagemImportada.Image;
         }
@@ -48,12 +49,12 @@ namespace manipulacao {
         }
 
         private void guia1BotaoReiniciarImagem_Click(object sender, EventArgs e) {
+            esconderGraficos();
             guia1CaixaImagemEditada.Image = guia1CaixaImagemImportada.Image;
         }
 
         private void guia1BotaoAdicionarBrilho_Click(object sender, EventArgs e) {
-            guia1ChartHistrogramaOriginal.Visible = false;
-            guia1ChartHistrogramaFinal.Visible = false;
+            esconderGraficos();
             if (guia1CaixaImagemEditada.Image != null) {
                 guia1CaixaImagemEditada.Image = adicionarBrilho(guia1CaixaImagemEditada, (int)guia1EntradaValorBrilho.Value);
             } else if (guia1CaixaImagemImportada.Image != null) {
@@ -64,8 +65,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoRemoverBrilho_Click(object sender, EventArgs e) {
-            guia1ChartHistrogramaOriginal.Visible = false;
-            guia1ChartHistrogramaFinal.Visible = false;
+            esconderGraficos();
             if (guia1CaixaImagemEditada.Image != null) {
                 guia1CaixaImagemEditada.Image = removerBrilho(guia1CaixaImagemEditada, (int)guia1EntradaValorBrilho.Value);
             } else if (guia1CaixaImagemImportada.Image != null) {
@@ -76,8 +76,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoConverterParaCinza_Click(object sender, EventArgs e) {
-            guia1ChartHistrogramaOriginal.Visible = false;
-            guia1ChartHistrogramaFinal.Visible = false;
+            esconderGraficos();
             if (guia1CaixaImagemEditada.Image != null) {
                 guia1CaixaImagemEditada.Image = converterParaEscalaDeCinza(guia1CaixaImagemEditada);
             } else if (guia1CaixaImagemImportada.Image != null) {
@@ -88,8 +87,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoEspelharHorizontalmente_Click(object sender, EventArgs e) {
-            guia1ChartHistrogramaOriginal.Visible = false;
-            guia1ChartHistrogramaFinal.Visible = false;
+            esconderGraficos();
             if (guia1CaixaImagemEditada.Image != null) {
                 guia1CaixaImagemEditada.Image = espelharHorizontalmente(guia1CaixaImagemEditada);
             } else if (guia1CaixaImagemImportada.Image != null) {
@@ -100,8 +98,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoEspelharVerticalmente_Click(object sender, EventArgs e) {
-            guia1ChartHistrogramaOriginal.Visible = false;
-            guia1ChartHistrogramaFinal.Visible = false;
+            esconderGraficos();
             if (guia1CaixaImagemEditada.Image != null) {
                 guia1CaixaImagemEditada.Image = espelharVerticalmente(guia1CaixaImagemEditada);
             } else if (guia1CaixaImagemImportada.Image != null) {
@@ -112,8 +109,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoAdicionarContraste_Click(object sender, EventArgs e) {
-            guia1ChartHistrogramaOriginal.Visible = false;
-            guia1ChartHistrogramaFinal.Visible = false;
+            esconderGraficos();
             if (guia1CaixaImagemImportada.Image != null) {
                 if (guia1EntradaValorContraste.Value > 0) {
                     if (guia1CaixaImagemEditada.Image != null) {
@@ -130,8 +126,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoRemoverContraste_Click(object sender, EventArgs e) {
-            guia1ChartHistrogramaOriginal.Visible = false;
-            guia1ChartHistrogramaFinal.Visible = false;
+            esconderGraficos();
             if (guia1CaixaImagemImportada.Image != null) {
                 if (guia1EntradaValorContraste.Value > 0) {
                     if (guia1CaixaImagemEditada.Image != null) {
@@ -148,8 +143,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoLimiarizar_Click(object sender, EventArgs e) {
-            guia1ChartHistrogramaOriginal.Visible = false;
-            guia1ChartHistrogramaFinal.Visible = false;
+            esconderGraficos();
             if (guia1CaixaImagemEditada.Image != null) {
                 guia1CaixaImagemEditada.Image = limiarizar(guia1CaixaImagemEditada, (int)guia1EntradaLimiarizacao.Value);
             } else if (guia1CaixaImagemImportada.Image != null) {
@@ -161,6 +155,7 @@ namespace manipulacao {
 
 
         private void guia1BotaoEqualizar_Click(object sender, EventArgs e) {
+            esconderGraficos();
             if (guia1CaixaImagemImportada.Image != null) {
                 guia1CaixaImagemEditada.Image = equalizar(guia1CaixaImagemImportada);
                 guia1ChartHistrogramaOriginal.Visible = true;
@@ -171,6 +166,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoMin_Click(object sender, EventArgs e) {
+            esconderGraficos();
             int valorBorda = 0;
             if(guia1RadioButtonDuplicar.Checked) {
                 valorBorda = 1;
@@ -195,6 +191,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoMean_Click(object sender, EventArgs e) {
+            esconderGraficos();
             int valorBorda = 0;
             if (guia1RadioButtonDuplicar.Checked) {
                 valorBorda = 1;
@@ -219,6 +216,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoMax_Click(object sender, EventArgs e) {
+            esconderGraficos();
             int valorBorda = 0;
             if (guia1RadioButtonDuplicar.Checked) {
                 valorBorda = 1;
@@ -243,6 +241,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoMediana_Click(object sender, EventArgs e) {
+            esconderGraficos();
             int valorBorda = 0;
             if (guia1RadioButtonDuplicar.Checked) {
                 valorBorda = 1;
@@ -267,6 +266,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoGaussiano_Click(object sender, EventArgs e) {
+            esconderGraficos();
             int valorBorda = 0;
             if (guia1RadioButtonDuplicar.Checked) {
                 valorBorda = 1;
@@ -296,6 +296,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoOrdem_Click(object sender, EventArgs e) {
+            esconderGraficos();
             int valorBorda = 0;
             if (guia1RadioButtonDuplicar.Checked) {
                 valorBorda = 1;
@@ -321,6 +322,7 @@ namespace manipulacao {
         }
 
         private void guia1BotaoSuavConservativa_Click(object sender, EventArgs e) {
+            esconderGraficos();
             int valorBorda = 0;
             if (guia1RadioButtonDuplicar.Checked) {
                 valorBorda = 1;
@@ -345,14 +347,74 @@ namespace manipulacao {
             }
         }
 
-
         private void guia1ComboBoxTamanhoMatriz_TextChanged(object sender, EventArgs e) {
             int maximo = int.Parse(guia1ComboBoxTamanhoMatriz.Text);
             maximo = maximo * maximo - 1;
             guia1NumeroValorIdOrdem.Maximum = maximo;
         }
 
-        //private Bitmap realce(PictureBox imagemEntrada, String operacao, int borda, int offSet) {
+        private void guia1BotaoPrewitt_Click(object sender, EventArgs e) {
+            int valorBorda = 0;
+            if (guia1RadioButtonDuplicar2.Checked) {
+                valorBorda = 1;
+            } else {
+                valorBorda = 0;
+            }
+
+            if (guia1CaixaImagemImportada.Image != null) {
+                if (guia1CaixaImagemEditada.Image != null) {
+                    guia1CaixaImagemEditada.Image = prewitt(guia1CaixaImagemEditada, valorBorda);
+                } else {
+                    guia1CaixaImagemEditada.Image = prewitt(guia1CaixaImagemImportada, valorBorda);
+                }
+                guia1GroupBoxHorizontal.Visible = true;
+                guia1GroupBoxVertical.Visible = true;
+            } else {
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
+            }
+        }
+
+        private void guia1BotaoSobel_Click(object sender, EventArgs e) {
+            int valorBorda = 0;
+            if (guia1RadioButtonDuplicar2.Checked) {
+                valorBorda = 1;
+            } else {
+                valorBorda = 0;
+            }
+
+            if (guia1CaixaImagemImportada.Image != null) {
+                if (guia1CaixaImagemEditada.Image != null) {
+                    guia1CaixaImagemEditada.Image = sobel(guia1CaixaImagemEditada, valorBorda);
+                } else {
+                    guia1CaixaImagemEditada.Image = sobel(guia1CaixaImagemImportada, valorBorda);
+                }
+                guia1GroupBoxHorizontal.Visible = true;
+                guia1GroupBoxVertical.Visible = true;
+            } else {
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
+            }
+        }
+
+        private void guia1BotaoLaplaciano_Click(object sender, EventArgs e) {
+            esconderGraficos();
+            int valorBorda = 0;
+            if (guia1RadioButtonDuplicar2.Checked) {
+                valorBorda = 1;
+            } else {
+                valorBorda = 0;
+            }
+
+            if (guia1CaixaImagemImportada.Image != null) {
+                if (guia1CaixaImagemEditada.Image != null) {
+                    guia1CaixaImagemEditada.Image = laplaciano(guia1CaixaImagemEditada, valorBorda);
+                } else {
+                    guia1CaixaImagemEditada.Image = laplaciano(guia1CaixaImagemImportada, valorBorda);
+                }
+            } else {
+                MessageBox.Show("É necessario importar uma imagem primeiro.");
+            }
+        }
+
         // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
         // Guia 2
 
@@ -560,6 +622,13 @@ namespace manipulacao {
 
         // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
         // Funções 
+
+        private void esconderGraficos() {
+            guia1ChartHistrogramaOriginal.Visible = false;
+            guia1ChartHistrogramaFinal.Visible = false;
+            guia1GroupBoxVertical.Visible = false;
+            guia1GroupBoxHorizontal.Visible = false;
+        }
 
         private Bitmap adicionarBrilho(PictureBox imagemEntrada, int valorBrilho) {
             Bitmap imagem = (Bitmap)imagemEntrada.Image;
@@ -1417,8 +1486,192 @@ namespace manipulacao {
                     }
                 }
             }
+            return saida;
+        }
+
+        private Bitmap prewitt(PictureBox imagemEntrada, int valorBorda) {
+            Bitmap imagemOriginal = (Bitmap)imagemEntrada.Image;
+            Bitmap saida = new Bitmap(imagemOriginal.Width, imagemOriginal.Height);
+
+            Bitmap bordasVerticais = new Bitmap(imagemOriginal.Width, imagemOriginal.Height);
+            Bitmap bordasHorizontais = new Bitmap(imagemOriginal.Width, imagemOriginal.Height);
+
+            int[,] filtroHorizontal = { { -1, 0, 1 }, { -1, 0, 1 }, { -1, 0, 1 } };
+            int[,] filtroVertical = { { -1, -1, -1 }, { 0, 0, 0 }, { 1, 1, 1 } };
+            int offSet = 1;
+
+            if (valorBorda == 0) {
+                for (int i = offSet; i < imagemOriginal.Width - offSet; i++) {
+                    for (int j = offSet; j < imagemOriginal.Height - offSet; j++) {
+                        ProcessarPixelPrewitt(imagemOriginal, saida, bordasVerticais, bordasHorizontais,
+                                            filtroHorizontal, filtroVertical, i, j);
+                    }
+                }
+            } else {
+                Bitmap imagemExpandida = expandirImagemComBorda(imagemOriginal, offSet);
+
+                for (int i = 0; i < imagemOriginal.Width; i++) {
+                    for (int j = 0; j < imagemOriginal.Height; j++) {
+                        ProcessarPixelPrewitt(imagemExpandida, saida, bordasVerticais, bordasHorizontais,
+                                            filtroHorizontal, filtroVertical, i + offSet, j + offSet);
+                    }
+                }
+            }
+
+            guia1CaixaImagemHorizontal.Image = bordasVerticais;
+            guia1CaixaImagemVertical.Image = bordasHorizontais; 
 
             return saida;
+        }
+
+        private void ProcessarPixelPrewitt(Bitmap imagem, Bitmap saida, Bitmap horizontal, Bitmap vertical,
+                                         int[,] prewittH, int[,] prewittV, int x, int y) {
+            int gH = 0, gV = 0; 
+
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    Color p = imagem.GetPixel(x + i, y + j);
+                    int grayValue = (int)(p.R * 0.3 + p.G * 0.59 + p.B * 0.11);
+
+                    gH += grayValue * prewittH[i + 1, j + 1]; 
+                    gV += grayValue * prewittV[i + 1, j + 1];
+                }
+            }
+
+            int magnitude = (int)Math.Sqrt(gH * gH + gV * gV);
+            magnitude = Math.Max(0, Math.Min(255, magnitude));
+
+            int normalizedGH = (gH + 765) / 6;
+            int normalizedGV = (gV + 765) / 6;
+            normalizedGH = Math.Max(0, Math.Min(255, normalizedGH));
+            normalizedGV = Math.Max(0, Math.Min(255, normalizedGV));
+
+            int outputX = x - (imagem.Width > saida.Width ? 1 : 0);
+            int outputY = y - (imagem.Height > saida.Height ? 1 : 0);
+
+            if (outputX >= 0 && outputX < saida.Width && outputY >= 0 && outputY < saida.Height) {
+                saida.SetPixel(outputX, outputY, Color.FromArgb(magnitude, magnitude, magnitude));
+                horizontal.SetPixel(outputX, outputY, Color.FromArgb(normalizedGH, normalizedGH, normalizedGH));
+                vertical.SetPixel(outputX, outputY, Color.FromArgb(normalizedGV, normalizedGV, normalizedGV));    
+            }
+        }
+
+        private Bitmap sobel(PictureBox imagemEntrada, int valorBorda) {
+            Bitmap imagemOriginal = (Bitmap)imagemEntrada.Image;
+            Bitmap saida = new Bitmap(imagemOriginal.Width, imagemOriginal.Height);
+            Bitmap horizontal = new Bitmap(imagemOriginal.Width, imagemOriginal.Height);  
+            Bitmap vertical = new Bitmap(imagemOriginal.Width, imagemOriginal.Height);   
+
+            int[,] sobelHorizontal = { { -1, 0, 1 }, { -2, 0, 2 }, { -1, 0, 1 } }; 
+            int[,] sobelVertical = { { -1, -2, -1 }, { 0, 0, 0 }, { 1, 2, 1 } };   
+
+            int offSet = 1;
+
+            if (valorBorda == 0) {
+                for (int i = offSet; i < imagemOriginal.Width - offSet; i++) {
+                    for (int j = offSet; j < imagemOriginal.Height - offSet; j++) {
+                        ProcessarPixelSobel(imagemOriginal, saida, horizontal, vertical,
+                                           sobelHorizontal, sobelVertical, i, j);
+                    }
+                }
+            } else {
+                Bitmap imagemExpandida = expandirImagemComBorda(imagemOriginal, offSet);
+
+                for (int i = 0; i < imagemOriginal.Width; i++) {
+                    for (int j = 0; j < imagemOriginal.Height; j++) {
+                        ProcessarPixelSobel(imagemExpandida, saida, horizontal, vertical,
+                                          sobelHorizontal, sobelVertical, i + offSet, j + offSet);
+                    }
+                }
+            }
+
+            guia1CaixaImagemHorizontal.Image = horizontal;  
+            guia1CaixaImagemVertical.Image = vertical;     
+
+            return saida;
+        }
+
+        private void ProcessarPixelSobel(Bitmap imagem, Bitmap saida, Bitmap horizontal, Bitmap vertical,
+                                       int[,] sobelH, int[,] sobelV, int x, int y) {
+            int gH = 0, gV = 0;
+
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    Color p = imagem.GetPixel(x + i, y + j);
+                    int grayValue = (int)(p.R * 0.3 + p.G * 0.59 + p.B * 0.11);
+
+                    gH += grayValue * sobelH[i + 1, j + 1];
+                    gV += grayValue * sobelV[i + 1, j + 1];
+                }
+            }
+
+            int magnitude = (int)Math.Sqrt(gH * gH + gV * gV);
+            magnitude = Math.Max(0, Math.Min(255, magnitude));
+
+            int normalizedGH = (gH + 1020) / 8;
+            int normalizedGV = (gV + 1020) / 8;
+            normalizedGH = Math.Max(0, Math.Min(255, normalizedGH));
+            normalizedGV = Math.Max(0, Math.Min(255, normalizedGV));
+
+            int outputX = x - (imagem.Width > saida.Width ? 1 : 0);
+            int outputY = y - (imagem.Height > saida.Height ? 1 : 0);
+
+            if (outputX >= 0 && outputX < saida.Width && outputY >= 0 && outputY < saida.Height) {
+                saida.SetPixel(outputX, outputY, Color.FromArgb(magnitude, magnitude, magnitude));
+                horizontal.SetPixel(outputX, outputY, Color.FromArgb(normalizedGH, normalizedGH, normalizedGH));  
+                vertical.SetPixel(outputX, outputY, Color.FromArgb(normalizedGV, normalizedGV, normalizedGV)); 
+            }
+        }
+
+        private Bitmap laplaciano(PictureBox imagemEntrada, int valorBorda) {
+            Bitmap imagemOriginal = (Bitmap)imagemEntrada.Image;
+            Bitmap saida = new Bitmap(imagemOriginal.Width, imagemOriginal.Height);
+
+            int[,] laplaciano4 = { { 0, -1, 0 }, { -1, 4, -1 }, { 0, -1, 0 } };      
+            int[,] laplaciano8 = { { -1, -1, -1 }, { -1, 8, -1 }, { -1, -1, -1 } };  
+
+            int[,] kernel = laplaciano8;
+
+            int offSet = 1;
+
+            if (valorBorda == 0) {
+                for (int i = offSet; i < imagemOriginal.Width - offSet; i++) {
+                    for (int j = offSet; j < imagemOriginal.Height - offSet; j++) {
+                        ProcessarPixelLaplaciano(imagemOriginal, saida, kernel, i, j);
+                    }
+                }
+            } else {
+                Bitmap imagemExpandida = expandirImagemComBorda(imagemOriginal, offSet);
+
+                for (int i = 0; i < imagemOriginal.Width; i++) {
+                    for (int j = 0; j < imagemOriginal.Height; j++) {
+                        ProcessarPixelLaplaciano(imagemExpandida, saida, kernel, i + offSet, j + offSet);
+                    }
+                }
+            }
+
+            return saida;
+        }
+
+        private void ProcessarPixelLaplaciano(Bitmap imagem, Bitmap saida, int[,] kernel, int x, int y) {
+            int valorLaplaciano = 0;
+
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    Color p = imagem.GetPixel(x + i, y + j);
+                    int grayValue = (int)(p.R * 0.3 + p.G * 0.59 + p.B * 0.11);
+                    valorLaplaciano += grayValue * kernel[i + 1, j + 1];
+                }
+            }
+
+            valorLaplaciano = Math.Max(0, Math.Min(255, valorLaplaciano));
+
+            int outputX = x - (imagem.Width > saida.Width ? 1 : 0);
+            int outputY = y - (imagem.Height > saida.Height ? 1 : 0);
+
+            if (outputX >= 0 && outputX < saida.Width && outputY >= 0 && outputY < saida.Height) {
+                saida.SetPixel(outputX, outputY, Color.FromArgb(valorLaplaciano, valorLaplaciano, valorLaplaciano));
+            }
         }
 
         private Bitmap expandirImagemComBorda(Bitmap original, int offSet) {
